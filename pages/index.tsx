@@ -25,7 +25,7 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
         <Text>{parseCurrency(product.price)}</Text>
         <Button
           onClick={() => setCart(state => state.concat(product))}
-          colorScheme='blue'>Agregar</Button>
+          colorScheme='primary'>Agregar</Button>
       </Stack>)}
     </Grid>
     {Boolean(cart.length) && <Button isExternal href={`https://wa.me/51940049419?text=${encodeURIComponent(text)}`} as={Link} colorScheme='whatsapp'>Ver carrito ({cart.length} productos)</Button>}
