@@ -40,9 +40,12 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
             variant='ghost'>Agregar</Button>
         </Stack>)}
       </Grid>
-      {Boolean(cart.length) && <Flex position='sticky' bottom={4} justifyContent='center' >
-        <Button isExternal href={`https://wa.me/51940049419?text=${encodeURIComponent(text)}`} as={Link} width='fit-content' colorScheme='whatsapp'>Ver carrito ({cart.length} productos)</Button>
-      </Flex>}
+      {Boolean(cart.length) && <AnimatePresence>
+        <Flex as={motion.div} animate={{ scale: 1 }} initial={{ scale: 0 }} exit={{ scale: 0 }}
+          position='sticky' bottom={4} justifyContent='center' >
+          <Button isExternal href={`https://wa.me/51940049419?text=${encodeURIComponent(text)}`} as={Link} width='fit-content' colorScheme='whatsapp'>Ver carrito ({cart.length} productos)</Button>
+        </Flex>
+      </AnimatePresence>}
     </Stack>
     <AnimatePresence>
       {selectedImage && <Flex
