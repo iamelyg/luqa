@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { GetStaticProps } from "next";
-import { Button, Grid, Link, Stack, Text, Box, Flex } from "@chakra-ui/react";
+import { Button, Grid, Link, Stack, Text, Image, Flex } from "@chakra-ui/react";
 
 import api from "@/product/api";
 import { Product } from "@/product/types";
@@ -22,6 +22,7 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
     <Grid gridGap={6} templateColumns='repeat(auto-fill, minmax(240px, 1fr))'>
       {products.map(product => <Stack spacing={3} backgroundColor='gray.100' borderRadius={10} padding={4} key={product.id}>
         <Stack spacing={1}>
+          <Image alt={product.title} src={product.image} objectFit='cover' borderTopRadius={10} />
           <Text>{product.title}</Text>
           <Text color='green.500' fontSize='sm' fontWeight='500'>{parseCurrency(product.price)}</Text>
         </Stack>
