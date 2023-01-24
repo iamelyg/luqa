@@ -2,10 +2,11 @@ import axios from 'axios';
 import Papa from 'papaparse';
 
 import { Product } from './types';
+import { INFORMATION } from '@/app/constants';
 
 export default {
     list: async (): Promise<Product[]> => {
-        return axios.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vRSziis5p9IykazYt8zOeEjTyKLYXgma0fu-BhrWG4TVqVRhq3OSfd6BYJR4K76aY60BP9PY5qYZeYu/pub?output=csv',
+        return axios.get(INFORMATION.sheet,
             { responseType: 'blob' })
             .then(response => {
                 return new Promise<Product[]>((resolve, reject) => {

@@ -1,7 +1,8 @@
-import { ChakraProvider, Container, Image, VStack } from '@chakra-ui/react';
+import { ChakraProvider, Container, Heading, Image, VStack } from '@chakra-ui/react';
 import { AppProps } from 'next/app';
 
 import theme from '@/theme';
+import { INFORMATION } from '@/app/constants';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -13,7 +14,8 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
       padding={4}
       maxWidth='container.xl'>
         <VStack>
-          <Image src='https://via.placeholder.com/150'borderRadius={9999}/>
+          <Image src={INFORMATION.logo} borderRadius={9999}/>
+          <Heading>{INFORMATION.title}</Heading>
         </VStack>
         <Component {...pageProps} />
       </Container>
