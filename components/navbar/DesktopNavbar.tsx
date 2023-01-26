@@ -3,13 +3,7 @@ import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
 import Link from 'next/link';
 import { MdOutlineShoppingBag } from 'react-icons/md';
-
-const data = [
-    { label: 'Inicio', slug: '/' },
-    { label: 'Tienda', slug: '/tienda' },
-    { label: 'atención al cliente', slug: '/atencion-cliente' },
-]
-
+import { INFORMATION } from '@/app/constants';
 
 export default function DesktopNavbar() {
     return (
@@ -25,7 +19,7 @@ export default function DesktopNavbar() {
                     <Image src={Logo.src} h={50} w={150} />
                 </Link>
                 <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
-                    {data.map((item, i) => (
+                    {INFORMATION.menu.map((item, i) => (
                         <Link key={i} href={item.slug} >
                             {item.label}
                         </Link>
