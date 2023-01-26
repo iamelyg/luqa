@@ -7,6 +7,8 @@ import {
     DrawerContent,
     DrawerCloseButton, Input, Image
 } from "@chakra-ui/react";
+import { MdMenu } from 'react-icons/md';
+
 
 const data = [{ label: 'home' }]
 
@@ -17,7 +19,7 @@ export default function MobileDrawer() {
     return (
         <Flex display={{ base: "flex", md: "none" }}>
             <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                <Image src='https://icongr.am/fontawesome/navicon.svg?size=24&color=currentColor' />
+                <Icon as={MdMenu} w={9} h={9} />
             </Button>
             <Drawer
                 isOpen={isOpen}

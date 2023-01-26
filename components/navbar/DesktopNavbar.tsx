@@ -1,17 +1,20 @@
-import { Image, Flex, Button, HStack, chakra } from '@chakra-ui/react';
+import { Image, Flex, Button, HStack, chakra, Icon } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
-// import * as NextLink from 'next/link'
-import Link from 'next/link'
+import Link from 'next/link';
+import { MdOutlineShoppingBag } from 'react-icons/md';
 
 
 import MobileDrawer from './Mobile';
 
 
-const data = [{ label: 'Inicio' }]
+const data = [
+    { label: 'Inicio', slug: '/' },
+    { label: 'Tienda', slug: '/tienda' },
+    { label: 'atención al cliente', slug: '/atencion-cliente' },
+]
 
 
-const CTA = "Get Started"
 export default function DesktopNavbar() {
     return (
         <chakra.header id="header">
@@ -23,18 +26,19 @@ export default function DesktopNavbar() {
                 justify="space-between"
             >
                 <MobileDrawer />
-
-
-                <Image src={Logo.src} h="50px" />
-
+                <Link href='/'>
+                    <Image src={Logo.src} h={50} w={150} />
+                </Link>
                 <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
                     {data.map((item, i) => (
-                        <Link key={i} href='/hola' >
+                        <Link key={i} href={item.slug} >
                             {item.label}
                         </Link>
                     ))}
                 </HStack>
-                <Button href={`/hola`} as={Link} width='fit-content' colorScheme='whatsapp'>Ver carrito</Button>
+                <Button variant='ghost' h={68} w={68} borderRadius={999}>
+                    <Icon as={MdOutlineShoppingBag} w={9} h={9} />
+                </Button>
 
             </Flex>
         </chakra.header>
