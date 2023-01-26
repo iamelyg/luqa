@@ -4,10 +4,6 @@ import React from "react";
 import Link from 'next/link';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 
-
-import MobileDrawer from './Mobile';
-
-
 const data = [
     { label: 'Inicio', slug: '/' },
     { label: 'Tienda', slug: '/tienda' },
@@ -25,7 +21,6 @@ export default function DesktopNavbar() {
                 align="center"
                 justify="space-between"
             >
-                <MobileDrawer />
                 <Link href='/'>
                     <Image src={Logo.src} h={50} w={150} />
                 </Link>

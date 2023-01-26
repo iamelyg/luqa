@@ -1,49 +1,27 @@
-import { useRef } from 'react';
-import {
-    useDisclosure, Flex, Box, Button, VStack, Icon, HStack, Link, Drawer, DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton, Input, Image
-} from "@chakra-ui/react";
-import { MdMenu } from 'react-icons/md';
+import { Flex, Icon, Link } from "@chakra-ui/react";
+import { CiShop } from 'react-icons/ci';
 
+const data = [
+    { label: 'Inicio', slug: '/' },
+    { label: 'Tienda', slug: '/tienda' },
+    { label: 'atención al cliente', slug: '/atencion-cliente' },
+]
 
-const data = [{ label: 'home' }]
-
-
-export default function MobileDrawer() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const btnRef = useRef();
-    return (
-        <Flex display={{ base: "flex", md: "none" }}>
-            <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                <Icon as={MdMenu} w={9} h={9} />
-            </Button>
-            <Drawer
-                isOpen={isOpen}
-                placement='left'
-                onClose={onClose}
-                finalFocusRef={btnRef}
-            >
-                <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
-                    <DrawerHeader>Create your account</DrawerHeader>
-
-                    <DrawerBody>
-                        <Input placeholder='Type here...' />
-                    </DrawerBody>
-
-                    <DrawerFooter>
-                        <Button variant='outline' mr={3} onClick={onClose}>
-                            Cancel
-                        </Button>
-                        <Button colorScheme='blue'>Save</Button>
-                    </DrawerFooter>
-                </DrawerContent>
-            </Drawer>
-        </Flex>
-    );
-};
+export default function MobileMenu() {
+    return <Flex
+        display={{ base: "flex", md: "none" }} bgColor='blue.900' margin={3} padding={2}
+        borderRadius='1.2rem' position='sticky' bottom={4} gap={4} justifyContent='center'>
+        {data.map((item, i) => (
+            <Flex key={i} href={item.slug} as={Link}
+                borderRadius='.5rem'
+                color='whiteAlpha.900'
+                padding={1}
+                _hover={{
+                    background: "white",
+                    color: "teal.500",
+                }}>
+                <Icon as={CiShop} h='2.2rem' w='2.2rem' />
+            </Flex>
+        ))}
+    </Flex>
+}
