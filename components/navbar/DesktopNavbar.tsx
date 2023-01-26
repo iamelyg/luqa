@@ -1,6 +1,9 @@
-import { Image, Flex, Button, HStack, chakra, Link } from '@chakra-ui/react';
+import { Image, Flex, Button, HStack, chakra } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
+// import * as NextLink from 'next/link'
+import Link from 'next/link'
+
 
 import MobileDrawer from './Mobile';
 
@@ -26,11 +29,12 @@ export default function DesktopNavbar() {
 
                 <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
                     {data.map((item, i) => (
-                        <Link key={i}>
-                            <Button variant="nav"> {item.label} </Button>
+                        <Link key={i} href='/hola' >
+                            {item.label}
                         </Link>
                     ))}
                 </HStack>
+                <Button href={`/hola`} as={Link} width='fit-content' colorScheme='whatsapp'>Ver carrito</Button>
 
             </Flex>
         </chakra.header>
