@@ -5,7 +5,7 @@ import {
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
-    DrawerCloseButton, Input
+    DrawerCloseButton, Input, Image
 } from "@chakra-ui/react";
 
 const data = [{ label: 'home' }]
@@ -16,8 +16,10 @@ export default function MobileDrawer() {
     const btnRef = useRef();
     return (
         <Flex display={{ base: "flex", md: "none" }}>
+            <Button leftIcon={<Image src='https://icongr.am/fontawesome/navicon.svg?size=24&color=currentColor' />}>
+            </Button>
             <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                Open
+                <Image src='https://icongr.am/fontawesome/navicon.svg?size=24&color=currentColor' />
             </Button>
             <Drawer
                 isOpen={isOpen}

@@ -1,11 +1,11 @@
 import { Image, Flex, Button, HStack, chakra, Link } from '@chakra-ui/react';
-import Logo from '../../public/vercel.svg';
+import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
 
 import MobileDrawer from './Mobile';
 
 
-const data = [{ label: 'home' }]
+const data = [{ label: 'Inicio' }]
 
 
 const CTA = "Get Started"
@@ -19,6 +19,9 @@ export default function DesktopNavbar() {
                 align="center"
                 justify="space-between"
             >
+                <MobileDrawer />
+
+
                 <Image src={Logo.src} h="50px" />
 
                 <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
@@ -27,12 +30,6 @@ export default function DesktopNavbar() {
                             <Button variant="nav"> {item.label} </Button>
                         </Link>
                     ))}
-                </HStack>
-                <HStack>
-                    <Button>
-                        {CTA}
-                    </Button>
-                    <MobileDrawer/>
                 </HStack>
 
             </Flex>
