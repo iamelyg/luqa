@@ -16,14 +16,12 @@ export default function MobileDrawer() {
     const btnRef = useRef();
     return (
         <Flex display={{ base: "flex", md: "none" }}>
-            <Button leftIcon={<Image src='https://icongr.am/fontawesome/navicon.svg?size=24&color=currentColor' />}>
-            </Button>
             <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
                 <Image src='https://icongr.am/fontawesome/navicon.svg?size=24&color=currentColor' />
             </Button>
             <Drawer
                 isOpen={isOpen}
-                placement='right'
+                placement='left'
                 onClose={onClose}
                 finalFocusRef={btnRef}
             >
