@@ -37,21 +37,12 @@ const Market: React.FC<Props> = ({ products }) => {
                 {parseCurrency(product.price)}
               </Text>
             </Stack>
-            <Button variant='outline' colorScheme='brand'  onClick={() => setCart(state => state.concat(product))}>
-              Agregar al carrito
-            </Button>
-            <Button variant='outline' colorScheme='blue'  onClick={() => setCart(state => state.concat(product))}>
-              Agregar al carrito
-            </Button>
+
           </CardBody>
           <CardFooter paddingTop={0} gap={1}>
-            <Button variant='solid' colorScheme='brand'>
-              Comprar
+            <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}>
+              Agregar al carrito
             </Button>
-            <Button variant='solid' colorScheme='blue'>
-              Comprar
-            </Button>
-           
           </CardFooter>
         </Card>)}
       </Grid>
