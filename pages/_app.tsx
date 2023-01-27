@@ -12,15 +12,10 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     <ChakraProvider theme={theme}>
       <DesktopNavbar />
       <Container
-        backgroundColor='white'
         boxShadow='md'
         marginY={4}
         padding={4}
         maxWidth='container.xl'>
-        <VStack>
-          <Image src={INFORMATION.logo} borderRadius={9999} />
-          <Heading>{INFORMATION.title}</Heading>
-        </VStack>
         <Component {...pageProps} />
       </Container>
       <MobileDrawer />
