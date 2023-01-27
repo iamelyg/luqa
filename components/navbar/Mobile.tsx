@@ -1,9 +1,10 @@
 import { INFORMATION } from "@/app/constants";
-import { Flex, Icon, Image, Link, useTheme  } from "@chakra-ui/react";
+import { Flex, Image, Link, Text, useTheme } from "@chakra-ui/react";
+import styled from '@emotion/styled';
 
 export default function MobileMenu() {
     const theme = useTheme();
-    
+
 
     console.log('theme', theme.colors);
     return <Flex
@@ -13,16 +14,20 @@ export default function MobileMenu() {
             <Flex key={i} href={item.slug} as={Link}
                 borderRadius='.5rem'
                 color='whiteAlpha.900'
+                direction='column'
+                alignItems='center'
                 padding={1}
                 _hover={{
                     background: "white",
-                    color: "teal.500",
+                    color: "primary.500",
                 }}>
-                <Image src={`${item.icon}size=${28}&color=${theme.colors.white.slice(1)}`}/>
-                <Image src={`${item.icon}size=${28}&color=${'ffffff'}`}/>
-                <i className="fa-regular fa-store"></i>
-                <i className="fa-solid fa-store"></i>
+                <IconLuqa className={`fa-solid ${item.icon}`} />
+                <Text>{item.label}</Text>
             </Flex>
         ))}
     </Flex>
 }
+
+const IconLuqa = styled.i`
+  font-size: 1.5rem;
+`
