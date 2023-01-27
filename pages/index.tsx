@@ -24,7 +24,7 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
   return <AnimateSharedLayout type="crossfade">
     <Stack spacing={6}>
       <Grid gridGap={6} templateColumns='repeat(auto-fill, minmax(240px, 1fr))'>
-        {products.map(product => <Stack spacing={3} backgroundColor='gray.100' borderRadius={10} padding={4} key={product.id}>
+        {products.map(product => <Stack spacing={3} borderRadius={10} padding={4} key={product.id}>
           <Stack spacing={1}>
             <Image
               onClick={() => setSelectedImage(product.image)}

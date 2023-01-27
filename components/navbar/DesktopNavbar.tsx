@@ -26,12 +26,14 @@ const DesktopNavbar: React.FC = () => {
                         </Link>
                     ))}
                 </HStack>
-                <Button variant='ghost' h={68} w={68} borderRadius={999}>
-                    <Icon as={MdOutlineShoppingBag} w={9} h={9} />
-                </Button>
-                <Button onClick={toggleColorMode}>
-                    Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
-                </Button>
+                <HStack>
+                    <Button onClick={toggleColorMode}>
+                        Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+                    </Button>
+                    <Button variant='ghost' h={68} w={68} borderRadius={999}>
+                        <Icon as={MdOutlineShoppingBag} w={9} h={9} />
+                    </Button>
+                </HStack>
 
             </Flex>
         </chakra.header>

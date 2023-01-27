@@ -13,8 +13,6 @@ export default extendTheme({
     styles: {
         global: {
             body: {
-                backgroundColor: 'bgBody',
-                color: 'white'
             }
         }
     }
