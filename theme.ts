@@ -12,14 +12,15 @@ export default extendTheme({
         },
         bgBody: '#070e27',
         gray: {
-            700: '#0C1946'
+            700: '#0C1946',
+            800: '#070e27'
         }
     },
     styles: {
         global: (props: StyleFunctionProps) => ({
             body: {
                 color: mode('gray.800', 'whiteAlpha.900')(props),
-                bg: mode('white', '#070e27')(props),
+                bg: mode('#EBF2FF', 'gray.800')(props),
             },
         }),
     }

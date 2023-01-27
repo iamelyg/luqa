@@ -1,14 +1,24 @@
-import { Image, Flex, Button, HStack, chakra, Icon, useColorMode } from '@chakra-ui/react';
+import { Image, Flex, Button, HStack, Icon, useColorMode, useColorModeValue, chakra } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
 import Link from 'next/link';
 import { MdOutlineShoppingBag } from 'react-icons/md';
+import styled from '@emotion/styled';
+import type { StyleFunctionProps } from '@chakra-ui/styled-system';
+import { mode } from '@chakra-ui/theme-tools'
+
 import { INFORMATION } from '@/app/constants';
 
+
+
 const DesktopNavbar: React.FC = () => {
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode, toggleColorMode } = useColorMode();
+
+    // const bg = useColorModeValue('red.500', 'red.200');
+    const bg = useColorModeValue('white', 'gray.800')
+    const shadow = useColorModeValue('lg', 'sm')
     return (
-        <chakra.header id="header" position={{ base: 'relative', md: 'sticky' }} top={0} zIndex={1}>
+        <chakra.header position={{ base: 'relative', md: 'sticky' }} top={0} zIndex={1} bg={bg} shadow={shadow} >
             <Flex
                 w="100%"
                 px="6"

@@ -11,7 +11,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     <ChakraProvider theme={theme}>
       <DesktopNavbar />
       <Container
-        boxShadow='md'
         marginY={4}
         padding={4}
         maxWidth='container.xl'>
