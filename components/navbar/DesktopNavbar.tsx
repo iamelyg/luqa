@@ -1,4 +1,4 @@
-import { Image, Flex, Button, HStack, chakra, Icon } from '@chakra-ui/react';
+import { Image, Flex, Button, HStack, chakra, Icon, useColorMode } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import { MdOutlineShoppingBag } from 'react-icons/md';
 import { INFORMATION } from '@/app/constants';
 
 const DesktopNavbar: React.FC = () => {
+    const { colorMode, toggleColorMode } = useColorMode()
     return (
         <chakra.header id="header">
             <Flex
@@ -27,6 +28,9 @@ const DesktopNavbar: React.FC = () => {
                 </HStack>
                 <Button variant='ghost' h={68} w={68} borderRadius={999}>
                     <Icon as={MdOutlineShoppingBag} w={9} h={9} />
+                </Button>
+                <Button onClick={toggleColorMode}>
+                    Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
                 </Button>
 
             </Flex>

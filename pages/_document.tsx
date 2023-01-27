@@ -1,12 +1,14 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document';
+import { ColorModeScript } from '@chakra-ui/react';
 
 export default function Document() {
   return (
     <Html lang="es">
       <Head >
-      <script src="https://kit.fontawesome.com/2746a1f4a5.js" crossOrigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/2746a1f4a5.js" crossOrigin="anonymous"></script>
       </Head>
       <body>
+        <ColorModeScript initialColorMode='dark' />
         <Main />
         <NextScript />
       </body>
