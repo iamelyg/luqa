@@ -1,15 +1,14 @@
-import { Image, Flex, Button, HStack, Icon, useColorMode, useColorModeValue, chakra, Text } from '@chakra-ui/react';
+import { Image, Flex, Button, HStack, useColorMode, useColorModeValue, chakra } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
 import Link from 'next/link';
-import { MdOutlineShoppingBag } from 'react-icons/md';
+
+import { DrawerExample } from '@/pages/tienda/components/Cart';
 
 import { INFORMATION } from '@/app/constants';
-import { useStoreContext } from '@/pages/tienda/context/store.context.d';
 
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();
-    const { cart } = useStoreContext();
 
     const bg = useColorModeValue('white', 'gray.800')
     const shadow = useColorModeValue('lg', 'sm')
@@ -36,10 +35,7 @@ const DesktopNavbar: React.FC = () => {
                     <Button onClick={toggleColorMode}>
                         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
                     </Button>
-                    <Button variant='ghost' h={68} w={68} borderRadius={999} >
-                        <Icon as={MdOutlineShoppingBag} w={9} h={9} />
-                    </Button>
-                    <Text>{cart.length} Productos</Text>
+                    <DrawerExample/>
                 </HStack>
 
             </Flex>
