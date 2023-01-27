@@ -8,11 +8,13 @@ import type { StyleFunctionProps } from '@chakra-ui/styled-system';
 import { mode } from '@chakra-ui/theme-tools'
 
 import { INFORMATION } from '@/app/constants';
+import { useTodoContext } from '@/pages/tienda/StoreProvider';
 
 
 
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();
+    const { saveTodo } = useTodoContext();
 
     // const bg = useColorModeValue('red.500', 'red.200');
     const bg = useColorModeValue('white', 'gray.800')
@@ -40,7 +42,7 @@ const DesktopNavbar: React.FC = () => {
                     <Button onClick={toggleColorMode}>
                         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
                     </Button>
-                    <Button variant='ghost' h={68} w={68} borderRadius={999}>
+                    <Button variant='ghost' h={68} w={68} borderRadius={999} onClick={() => saveTodo({ title: 'hola', description: 'njcdn', status: 'k', id: 'dnc' })}>
                         <Icon as={MdOutlineShoppingBag} w={9} h={9} />
                     </Button>
                 </HStack>
