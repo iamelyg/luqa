@@ -5,6 +5,7 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 import api from "@/product/api";
 import { Product } from "@/product/types";
+import { useStoreContext } from "./context/store.context.d";
 
 interface Props {
   products: Product[]
@@ -15,6 +16,7 @@ const parseCurrency = (value: number): String => value.toLocaleString('es-PE', {
 const Market: React.FC<Props> = ({ products }) => {
   const [cart, setCart] = useState<Product[]>([]);
   const [selectedImage, setSelectedImage] = useState<string>('');
+  const { addToCart } = useStoreContext();
 
   const text = useMemo(() => cart
     .reduce((message, product) => message.concat(`* ${product.title} - ${parseCurrency(product.price)}\n`), '')
@@ -40,7 +42,8 @@ const Market: React.FC<Props> = ({ products }) => {
 
           </CardBody>
           <CardFooter paddingTop={0} gap={1}>
-            <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}>
+            {/* <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}> */}
+            <Button variant='outline' colorScheme='brand' onClick={() => addToCart(product) }>
               Agregar al carrito
             </Button>
           </CardFooter>

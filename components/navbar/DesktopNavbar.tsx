@@ -1,4 +1,4 @@
-import { Image, Flex, Button, HStack, Icon, useColorMode, useColorModeValue, chakra } from '@chakra-ui/react';
+import { Image, Flex, Button, HStack, Icon, useColorMode, useColorModeValue, chakra, Text } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
 import Link from 'next/link';
@@ -9,12 +9,14 @@ import { mode } from '@chakra-ui/theme-tools'
 
 import { INFORMATION } from '@/app/constants';
 import { useTodoContext } from '@/pages/tienda/StoreProvider';
+import { useStoreContext } from '@/pages/tienda/context/store.context.d';
 
 
 
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();
     const { saveTodo } = useTodoContext();
+    const { cart } = useStoreContext();
 
     // const bg = useColorModeValue('red.500', 'red.200');
     const bg = useColorModeValue('white', 'gray.800')
@@ -45,6 +47,7 @@ const DesktopNavbar: React.FC = () => {
                     <Button variant='ghost' h={68} w={68} borderRadius={999} onClick={() => saveTodo({ title: 'hola', description: 'njcdn', status: 'k', id: 'dnc' })}>
                         <Icon as={MdOutlineShoppingBag} w={9} h={9} />
                     </Button>
+                    <Text>{cart.length} Productos</Text>
                 </HStack>
 
             </Flex>
