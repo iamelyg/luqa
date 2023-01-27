@@ -3,22 +3,14 @@ import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
 import Link from 'next/link';
 import { MdOutlineShoppingBag } from 'react-icons/md';
-import styled from '@emotion/styled';
-import type { StyleFunctionProps } from '@chakra-ui/styled-system';
-import { mode } from '@chakra-ui/theme-tools'
 
 import { INFORMATION } from '@/app/constants';
-import { useTodoContext } from '@/pages/tienda/StoreProvider';
 import { useStoreContext } from '@/pages/tienda/context/store.context.d';
-
-
 
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();
-    const { saveTodo } = useTodoContext();
     const { cart } = useStoreContext();
 
-    // const bg = useColorModeValue('red.500', 'red.200');
     const bg = useColorModeValue('white', 'gray.800')
     const shadow = useColorModeValue('lg', 'sm')
     return (
@@ -44,7 +36,7 @@ const DesktopNavbar: React.FC = () => {
                     <Button onClick={toggleColorMode}>
                         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
                     </Button>
-                    <Button variant='ghost' h={68} w={68} borderRadius={999} onClick={() => saveTodo({ title: 'hola', description: 'njcdn', status: 'k', id: 'dnc' })}>
+                    <Button variant='ghost' h={68} w={68} borderRadius={999} >
                         <Icon as={MdOutlineShoppingBag} w={9} h={9} />
                     </Button>
                     <Text>{cart.length} Productos</Text>

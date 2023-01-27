@@ -27,7 +27,7 @@ const Market: React.FC<Props> = ({ products }) => {
     <Stack spacing={6}>
 
       <Grid gridGap={6} templateColumns='repeat(auto-fill, minmax(240px, 1fr))'>
-        {products.map(product => <Card maxW='sm'>
+        {products.map(product => <Card maxW='sm' key={product.id}>
           <CardBody>
             <Image
               onClick={() => setSelectedImage(product.image)}
