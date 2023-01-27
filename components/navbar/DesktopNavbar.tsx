@@ -8,7 +8,7 @@ import { INFORMATION } from '@/app/constants';
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode()
     return (
-        <chakra.header id="header">
+        <chakra.header id="header" position={{ base: 'relative', md: 'sticky' }} top={0} zIndex={1}>
             <Flex
                 w="100%"
                 px="6"
