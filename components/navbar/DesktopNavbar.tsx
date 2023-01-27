@@ -1,7 +1,8 @@
-import { Image, Flex, Button, HStack, useColorMode, useColorModeValue, chakra } from '@chakra-ui/react';
-import Logo from '../../public/logo-luqa-pe.png';
 import React from "react";
+import { Image, Flex, Button, HStack, useColorMode, useColorModeValue, chakra, Icon } from '@chakra-ui/react';
+import Logo from '../../public/logo-luqa-pe.png';
 import Link from 'next/link';
+import { BsMoonStars, BsSun } from 'react-icons/bs';
 
 import { DrawerExample } from '@/pages/tienda/components/Cart';
 
@@ -32,10 +33,11 @@ const DesktopNavbar: React.FC = () => {
                     ))}
                 </HStack>
                 <HStack>
-                    <Button onClick={toggleColorMode}>
-                        Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+                    <Button colorScheme='brand' onClick={toggleColorMode} h={10} w={10} variant='ghost'>
+                        <Icon as={colorMode === 'light' ? BsMoonStars : BsSun} w={5} h={5} />
+                        {/* {colorMode === 'light' ? <Icon as={BsMoonStars} w={10} h={10}/> : <Icon as={BsSunFill}/>} */}
                     </Button>
-                    <DrawerExample/>
+                    <DrawerExample />
                 </HStack>
 
             </Flex>
