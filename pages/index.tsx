@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { GetStaticProps } from "next";
-import { Button, Grid, Link, Stack, Text, Image, Flex } from "@chakra-ui/react";
+import { Button, Grid, Link, Stack, Text, Image, Flex, Card, CardHeader, CardBody, CardFooter, Heading, Divider, ButtonGroup } from "@chakra-ui/react";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 import api from "@/product/api";
@@ -23,8 +23,9 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
 
   return <AnimateSharedLayout type="crossfade">
     <Stack spacing={6}>
+
       <Grid gridGap={6} templateColumns='repeat(auto-fill, minmax(240px, 1fr))'>
-        {products.map(product => <Stack spacing={3} borderRadius={10} padding={4} key={product.id}>
+        {/* {products.map(product => <Stack spacing={3} borderRadius={10} padding={4} key={product.id}>
           <Stack spacing={1}>
             <Image
               onClick={() => setSelectedImage(product.image)}
@@ -39,6 +40,29 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
             size='sm'
             variant='ghost'>Agregar</Button>
         </Stack>)}
+         */}
+        {products.map(product => <Card maxW='sm'>
+          <CardBody>
+            <Image
+              onClick={() => setSelectedImage(product.image)}
+              as={motion.img} cursor='pointer' layoutId={product.image}
+              alt={product.title} src={product.image} objectFit='cover' borderTopRadius={10} />
+            <Stack mt='6' spacing='3'>
+              <Heading size='sm'>{product.title}</Heading>
+              <Text color='green.500' fontSize='xl'>
+                {parseCurrency(product.price)}
+              </Text>
+            </Stack>
+          </CardBody>
+          <CardFooter paddingTop={0} gap={1}>
+            <Button variant='solid' colorScheme='blue'>
+              Comprar
+            </Button>
+            <Button variant='ghost' colorScheme='blue'  onClick={() => setCart(state => state.concat(product))}>
+              Agregar al carrito
+            </Button>
+          </CardFooter>
+        </Card>)}
       </Grid>
       {Boolean(cart.length) && <AnimatePresence>
         <Flex as={motion.div} animate={{ scale: 1 }} initial={{ scale: 0 }} exit={{ scale: 0 }}

@@ -11,6 +11,9 @@ export default extendTheme({
             100: theme.colors[INFORMATION.color],
         },
         bgBody: '#070e27',
+        gray: {
+            700: '#0C1946'
+        }
     },
     styles: {
         global: (props: StyleFunctionProps) => ({
