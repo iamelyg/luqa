@@ -1,5 +1,3 @@
-import { CiShop } from 'react-icons/ci';
-
 export const INFORMATION = {
     logo: 'https://via.placeholder.com/150',
     banner: '',

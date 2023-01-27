@@ -1,12 +1,9 @@
 import { INFORMATION } from "@/app/constants";
-import { Flex, Image, Link, Text, useTheme } from "@chakra-ui/react";
+import { Flex, Link, Text } from "@chakra-ui/react";
 import styled from '@emotion/styled';
 
-export default function MobileMenu() {
-    const theme = useTheme();
+const MobileMenu: React.FC = () => {
 
-
-    console.log('theme', theme.colors);
     return <Flex
         display={{ base: "flex", md: "none" }} bgColor='blue.900' margin={3} padding={2}
         borderRadius='1.2rem' position='sticky' bottom={4} gap={4} justifyContent='center'>
@@ -31,3 +28,5 @@ export default function MobileMenu() {
 const IconLuqa = styled.i`
   font-size: 1.5rem;
 `
+
+export default MobileMenu;

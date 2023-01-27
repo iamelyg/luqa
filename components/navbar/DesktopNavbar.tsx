@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 import { INFORMATION } from '@/app/constants';
 
-export default function DesktopNavbar() {
+const DesktopNavbar: React.FC = () => {
     return (
         <chakra.header id="header">
             <Flex
@@ -33,3 +33,5 @@ export default function DesktopNavbar() {
         </chakra.header>
     );
 }
+
+export default DesktopNavbar;
