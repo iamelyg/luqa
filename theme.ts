@@ -1,4 +1,6 @@
 import { extendTheme, theme } from "@chakra-ui/react";
+import { mode } from '@chakra-ui/theme-tools';
+import type { StyleFunctionProps } from '@chakra-ui/styled-system';
 
 import { INFORMATION } from "./app/constants";
 
@@ -11,9 +13,11 @@ export default extendTheme({
         bgBody: '#070e27',
     },
     styles: {
-        global: {
+        global: (props: StyleFunctionProps) => ({
             body: {
-            }
-        }
+                color: mode('gray.800', 'whiteAlpha.900')(props),
+                bg: mode('white', '#070e27')(props),
+            },
+        }),
     }
 })
