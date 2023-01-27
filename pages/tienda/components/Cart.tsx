@@ -10,7 +10,7 @@ import {
     useDisclosure,
     Button, Text,
     Input,
-    Icon,
+    Icon, Flex, Image
 
 } from '@chakra-ui/react';
 import { MdOutlineShoppingBag } from 'react-icons/md';
@@ -19,7 +19,7 @@ import { useStoreContext } from '../context/store.context.d';
 export function DrawerExample() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { cart } = useStoreContext();
-    
+
     return (
         <>
             <Button onClick={onOpen} colorScheme='brand' variant='ghost' h={68} w={68} borderRadius={999} >
@@ -31,14 +31,19 @@ export function DrawerExample() {
                 isOpen={isOpen}
                 placement='bottom'
                 onClose={onClose}
+                size='xl'
             >
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader>Create your account</DrawerHeader>
+                    <DrawerHeader>Tu carrito</DrawerHeader>
 
                     <DrawerBody>
-                        <Input placeholder='Type here...' />
+                        {cart.map(prod => <Flex key={prod.id}>
+                            <Image src={prod.image} w={20}/>
+                            <Text>{prod.title}</Text>
+                            <Text>{prod.price}</Text>
+                        </Flex>)}
                     </DrawerBody>
 
                     <DrawerFooter>
