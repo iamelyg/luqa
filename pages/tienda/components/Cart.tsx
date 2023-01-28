@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useMemo } from 'react';
 import {
     Drawer,
     DrawerBody,
@@ -7,18 +7,31 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useDisclosure,
+    useDisclosure, Link,
     Button, Text,
-    Input,
     Icon, Flex, Image
-
 } from '@chakra-ui/react';
 import { MdOutlineShoppingBag } from 'react-icons/md';
+
 import { useStoreContext } from '../context/store.context.d';
 
+const parseCurrency = (value: number): String => value.toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })
+
 export function DrawerExample() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const { cart } = useStoreContext();
+
+    const productList = useMemo(() => cart
+        .reduce((message, product) => message.concat(`* ${product.title} - ${parseCurrency(product.price)}\n`), '')
+        .concat(`\nTotal: ${parseCurrency(cart.reduce((total, product) => total + product.price, 0))}`)
+        , [cart])
+
+    const text = `*Hola*, quiero pagar mi pedido \n\n`;
+
+    const sendMessage = () => {
+        window.open(`https://wa.me/51940049419?text=${encodeURIComponent(text.concat(productList))}`, '_blank', 'noopener,noreferrer')
+        console.log('hola')
+    }
 
     return (
         <>
@@ -40,7 +53,7 @@ export function DrawerExample() {
 
                     <DrawerBody>
                         {cart.map(prod => <Flex key={prod.id}>
-                            <Image src={prod.image} w={20}/>
+                            <Image src={prod.image} w={20} />
                             <Text>{prod.title}</Text>
                             <Text>{prod.price}</Text>
                         </Flex>)}
@@ -48,9 +61,13 @@ export function DrawerExample() {
 
                     <DrawerFooter>
                         <Button variant='outline' mr={3} onClick={onClose}>
-                            Cancel
+                            Seguir comprando
                         </Button>
-                        <Button colorScheme='blue'>Save</Button>
+                        <Button variant='solid' isDisabled={Boolean(!cart.length)} width='fit-content' colorScheme='brand' onClick={sendMessage}>
+                            {/* <Link isExternal href={`https://wa.me/51940049419?text=${encodeURIComponent(text)}`}>Enviar</Link> */}
+                            Enviar
+                        </Button>
+
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
