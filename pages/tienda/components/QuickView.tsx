@@ -14,7 +14,7 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
             <Button onClick={onOpen}>Open Modal</Button>
             <Modal size='xl' colorScheme='brand' scrollBehavior='inside' blockScrollOnMount={true} isOpen={isOpen} onClose={onClose} isCentered motionPreset='slideInBottom'>
                 <ModalOverlay backdropFilter='blur(5px)' />
-                <ModalContent >
+                <ModalContent w={{ base: '90%', md: '80%' }} maxWidth='container.xl'>
                     <ModalHeader>{selectedProduct.title}</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
