@@ -19,18 +19,19 @@ const DesktopNavbar: React.FC = () => {
                 w="100%"
                 px="6"
                 py="5"
-                align="center"
                 justify="space-between"
             >
-                <Link href='/'>
-                    <Image src={Logo.src} h={50} w={150} />
-                </Link>
-                <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
-                    {INFORMATION.menu.map((item, i) => (
-                        <Link key={i} href={item.slug} >
-                            {item.label}
-                        </Link>
-                    ))}
+                <HStack gap={6}>
+                    <Link href='/'>
+                        <Image src={Logo.src} h={50} w={150} />
+                    </Link>
+                    <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
+                        {INFORMATION.menu.map((item, i) => (
+                            <Link key={i} href={item.slug} >
+                                {item.label}
+                            </Link>
+                        ))}
+                    </HStack>
                 </HStack>
                 <HStack>
                     <Button colorScheme='brand' onClick={toggleColorMode} h={10} w={10} variant='ghost'>
