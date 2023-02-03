@@ -11,7 +11,7 @@ import {
     Button, Text,
     Icon, Flex, Image
 } from '@chakra-ui/react';
-import { MdOutlineShoppingBag } from 'react-icons/md';
+import { MdOutlineShoppingCart } from 'react-icons/md';
 
 import { useStoreContext } from '../context/store.context.d';
 
@@ -36,7 +36,7 @@ export function DrawerExample() {
     return (
         <>
             <Button onClick={onOpen} colorScheme='brand' variant='ghost' h={68} w={68} borderRadius={999} >
-                <Icon as={MdOutlineShoppingBag} w={9} h={9} />
+                <Icon as={MdOutlineShoppingCart} w={9} h={9} />
             </Button>
             <Text>{cart.length} Productos</Text>
 
