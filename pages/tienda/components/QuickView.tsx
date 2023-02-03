@@ -1,11 +1,4 @@
-import {
-    useDisclosure, Button, Text, Modal, ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-} from '@chakra-ui/react';
+import { useDisclosure, Button, Text, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 
 import { Product } from '@/product/types';
 
@@ -19,13 +12,14 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
     return (
         <>
             <Button onClick={onOpen}>Open Modal</Button>
-
-            <Modal size='xl' blockScrollOnMount={true} isOpen={isOpen} onClose={onClose} isCentered motionPreset='slideInBottom'>
+            <Modal size='xl' colorScheme='brand' scrollBehavior='inside' blockScrollOnMount={true} isOpen={isOpen} onClose={onClose} isCentered motionPreset='slideInBottom'>
                 <ModalOverlay backdropFilter='blur(5px)' />
                 <ModalContent >
                     <ModalHeader>{selectedProduct.title}</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
+                        <Image
+                            alt={selectedProduct.title} src={selectedProduct.image} objectFit='cover' borderRadius={10} />
                         <Text >{selectedProduct.description}</Text>
                         <Text fontWeight='bold'>{selectedProduct.price}</Text>
                     </ModalBody>
