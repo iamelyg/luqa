@@ -1,6 +1,8 @@
 import { INFORMATION } from "@/app/constants";
-import { Flex, Link, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import styled from '@emotion/styled';
+import Link from 'next/link';
+
 
 const MobileMenu: React.FC = () => {
 
