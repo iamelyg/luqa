@@ -6,7 +6,7 @@ const MobileMenu: React.FC = () => {
 
     return <Flex
         display={{ base: "flex", md: "none" }} bgColor='blue.900' margin={3} padding={2}
-        borderRadius='1.2rem' position='sticky' bottom={4} gap={4} justifyContent='center'>
+        borderRadius='1.2rem' position='fixed' bottom={0} left={0} right={0} gap={4} justifyContent='center'>
         {INFORMATION.menu.map((item, i) => (
             <Flex key={i} href={item.slug} as={Link}
                 borderRadius='.5rem'
