@@ -68,6 +68,7 @@ const Market: React.FC<Props> = ({ products }) => {
         justifyContent='center'
         left={0}
         top={0}
+        zIndex={2}
         position='fixed'
         alignItems='center'>
         <Image key='image' src={selectedImage} />
