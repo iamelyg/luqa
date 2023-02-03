@@ -3,6 +3,8 @@ import { GetStaticProps } from "next";
 import { Button, Grid, Link, Stack, Text, Image, Flex, Card, CardHeader, CardBody, CardFooter, Heading, Divider, ButtonGroup } from "@chakra-ui/react";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
+import QuickView from "./components/QuickView";
+
 import api from "@/product/api";
 import { Product } from "@/product/types";
 import { useStoreContext } from "./context/store.context.d";
@@ -39,11 +41,11 @@ const Market: React.FC<Props> = ({ products }) => {
                 {parseCurrency(product.price)}
               </Text>
             </Stack>
-
+            <QuickView selectedProduct={product} />
           </CardBody>
           <CardFooter paddingTop={0} gap={1}>
             {/* <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}> */}
-            <Button variant='outline' colorScheme='brand' onClick={() => addToCart(product) }>
+            <Button variant='outline' colorScheme='brand' onClick={() => addToCart(product)}>
               Agregar al carrito
             </Button>
           </CardFooter>
