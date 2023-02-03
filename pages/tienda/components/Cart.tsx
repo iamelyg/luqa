@@ -42,9 +42,9 @@ export function DrawerExample() {
 
             <Drawer
                 isOpen={isOpen}
-                placement='bottom'
+                placement='right'
                 onClose={onClose}
-                size='xl'
+                // size='xl'
             >
                 <DrawerOverlay />
                 <DrawerContent>
