@@ -1,6 +1,6 @@
 import { useDisclosure, Button, Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 
-import { Product } from '@/product/types';
+import { Product } from '@/src/product/types';
 
 interface Props {
     selectedProduct: Product

@@ -1,5 +1,5 @@
 
-import { Product } from '@/product/types';
+import { Product } from '@/src/product/types';
 import { useContext, createContext, useState } from 'react';
 import { StoreContextType } from './types';
 

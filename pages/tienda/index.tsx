@@ -5,8 +5,8 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 import QuickView from "./components/QuickView";
 
-import api from "@/product/api";
-import { Product } from "@/product/types";
+import api from "@/src/product/api";
+import { Product } from "@/src/product/types";
 import { useStoreContext } from "./context/store.context.d";
 
 interface Props {

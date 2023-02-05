@@ -6,7 +6,7 @@ import { BsMoonStars, BsSun } from 'react-icons/bs';
 
 import { DrawerExample } from '@/pages/tienda/components/Cart';
 
-import { INFORMATION } from '@/app/constants';
+import { INFORMATION } from '@/src/app/constants';
 
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();

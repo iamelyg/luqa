@@ -2,7 +2,7 @@ import axios from 'axios';
 import Papa from 'papaparse';
 
 import { Product } from './types';
-import { INFORMATION } from '@/app/constants';
+import { INFORMATION } from '@/src/app/constants';
 
 export default {
     list: async (): Promise<Product[]> => {
