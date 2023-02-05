@@ -1,4 +1,5 @@
-import { useDisclosure, Button, Center, Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
+import { useDisclosure, Button, Icon, Center, Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
+import { BsEye } from "react-icons/bs";
 
 import { Product } from '@/src/product/types';
 import { parseCurrency } from '@/src/utils/utilities';
@@ -12,7 +13,7 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 
     return (
         <>
-            <Button onClick={onOpen}>Vista rápida</Button>
+            <Button onClick={onOpen} variant='ghost' position='absolute' h={10} w={10} bottom={1} right={1}><Icon w={5} h={5} as={BsEye}/></Button>
             <Modal size='xl' colorScheme='brand' scrollBehavior='inside' blockScrollOnMount={true} isOpen={isOpen} onClose={onClose} isCentered motionPreset='slideInBottom'>
                 <ModalOverlay backdropFilter='blur(5px)' />
                 <ModalContent w={{ base: '90%', md: '80%' }} maxWidth='container.xl' maxH='95%'>

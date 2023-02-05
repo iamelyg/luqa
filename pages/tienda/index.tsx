@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { GetStaticProps } from "next";
-import { Button, Grid, Link, Stack, Text, Image, Flex, Card, CardHeader, CardBody, CardFooter, Heading, Divider, ButtonGroup } from "@chakra-ui/react";
+import { Button, Grid, Link, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup } from "@chakra-ui/react";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 import QuickView from "./components/QuickView";
@@ -31,16 +31,19 @@ const Market: React.FC<Props> = ({ products }) => {
       <Grid gridGap={6} templateColumns='repeat(auto-fill, minmax(240px, 1fr))'>
         {products.map(product => <Card maxW='sm' key={product.id}>
           <CardBody>
-            <Image
-              onClick={() => setSelectedImage(product.image)}
-              as={motion.img} cursor='pointer' layoutId={product.image}
-              alt={product.title} src={product.image} objectFit='cover' borderTopRadius={10} />
+            <Center position='relative'>
+              <Image
+                onClick={() => setSelectedImage(product.image)}
+                as={motion.img} cursor='pointer' layoutId={product.image}
+                alt={product.title} src={product.image} objectFit='cover' borderTopRadius={10} />
+              <QuickView selectedProduct={product} />
+            </Center>
             <Stack mt='6' spacing='3'>
               <Heading size='sm'>{product.title}</Heading>
               <Text color='green.400' fontWeight='bold' fontSize='xl' justifyContent='space-between' display='flex' ><span>Online</span> {parseCurrency(product.price)}</Text>
               <Text color='gray.500' fontSize='lg' justifyContent='space-between' display='flex' m={0}><span>Regular</span> <del>{parseCurrency(product.regularPrice)}</del></Text>
             </Stack>
-            <QuickView selectedProduct={product} />
+
           </CardBody>
           <CardFooter paddingTop={0} gap={1}>
             {/* <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}> */}
