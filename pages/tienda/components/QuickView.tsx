@@ -1,4 +1,4 @@
-import { useDisclosure, Button, Center,Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
+import { useDisclosure, Button, Center, Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
 
 import { Product } from '@/src/product/types';
 
@@ -22,10 +22,17 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
                                 <Image
                                     alt={selectedProduct.title} src={selectedProduct.image} objectFit='cover' borderRadius={10} />
                             </Center>
-                            <VStack>
+                            <VStack alignItems='initial'>
                                 <ModalHeader>{selectedProduct.title}</ModalHeader>
-                                <Text fontWeight='bold'>{selectedProduct.price}</Text>
-                                <Text >{selectedProduct.description}</Text>
+                                <Text>{selectedProduct.description}</Text>
+                                <HStack justifyContent='space-between'>
+                                    <Text fontWeight='bold'>online</Text>
+                                    <Text fontWeight='bold'>{selectedProduct.price}</Text>
+                                </HStack>
+                                <HStack justifyContent='space-between'>
+                                    <Text>Regular</Text>
+                                    <Text>{selectedProduct.regularPrice}</Text>
+                                </HStack>
                                 <ModalFooter>
                                     <Button colorScheme='blue' mr={3} onClick={onClose}>
                                         Agregar al carrito
