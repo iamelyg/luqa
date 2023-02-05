@@ -16,7 +16,7 @@ export default {
                             console.log('RESPONSE DATA', results.data);
                             const products = results.data as Product[];
 
-                            return resolve(products.map(product => ({ ...product, price:  Number(product.price)})));
+                            return resolve(products.map(product => ({ ...product, price:  Number(product.price), regularPrice:  Number(product.regularPrice)})));
                         },
                         error: error => {
                             return reject(error.message);

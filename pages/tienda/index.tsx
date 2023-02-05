@@ -37,9 +37,8 @@ const Market: React.FC<Props> = ({ products }) => {
               alt={product.title} src={product.image} objectFit='cover' borderTopRadius={10} />
             <Stack mt='6' spacing='3'>
               <Heading size='sm'>{product.title}</Heading>
-              <Text color='green.500' fontSize='xl'>
-                {parseCurrency(product.price)}
-              </Text>
+              <Text color='green.500' fontSize='xl'>{parseCurrency(product.price)}</Text>
+              <Text color='gray.500' fontSize='lg' as='del'>{parseCurrency(product.regularPrice)}</Text>
             </Stack>
             <QuickView selectedProduct={product} />
           </CardBody>
