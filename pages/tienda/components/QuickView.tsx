@@ -1,6 +1,7 @@
 import { useDisclosure, Button, Center, Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
 
 import { Product } from '@/src/product/types';
+import { parseCurrency } from '@/src/utils/utilities';
 
 interface Props {
     selectedProduct: Product
@@ -25,13 +26,13 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
                             <VStack alignItems='initial'>
                                 <ModalHeader>{selectedProduct.title}</ModalHeader>
                                 <Text>{selectedProduct.description}</Text>
-                                <HStack justifyContent='space-between'>
-                                    <Text fontWeight='bold'>online</Text>
-                                    <Text fontWeight='bold'>{selectedProduct.price}</Text>
+                                <HStack justifyContent='space-between' color='green'>
+                                    <Text fontWeight='bold'>Online</Text>
+                                    <Text fontWeight='bold' >{parseCurrency(selectedProduct.price)}</Text>
                                 </HStack>
-                                <HStack justifyContent='space-between'>
+                                <HStack justifyContent='space-between' color='gray.300'>
                                     <Text>Regular</Text>
-                                    <Text>{selectedProduct.regularPrice}</Text>
+                                    <Text as='del'>{parseCurrency(selectedProduct.regularPrice)}</Text>
                                 </HStack>
                                 <ModalFooter>
                                     <Button colorScheme='blue' mr={3} onClick={onClose}>
