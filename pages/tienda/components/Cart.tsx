@@ -1,23 +1,12 @@
 import { useMemo } from 'react';
-import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    useDisclosure, Link,
-    Button, Text,
-    Icon, Flex, Image
-} from '@chakra-ui/react';
+import { Box, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image } from '@chakra-ui/react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 
 import { useStoreContext } from '../context/store.context.d';
+import { parseCurrency } from '@/src/utils/utilities';
+import { Product } from '@/src/product/types';
 
-const parseCurrency = (value: number): String => value.toLocaleString('es-PE', { style: 'currency', currency: 'PEN' })
-
-export function DrawerExample() {
+const Cart: React.FC = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { cart } = useStoreContext();
 
@@ -44,7 +33,7 @@ export function DrawerExample() {
                 isOpen={isOpen}
                 placement='right'
                 onClose={onClose}
-                // size='xl'
+                size='md'
             >
                 <DrawerOverlay />
                 <DrawerContent>
@@ -52,11 +41,7 @@ export function DrawerExample() {
                     <DrawerHeader>Tu carrito</DrawerHeader>
 
                     <DrawerBody>
-                        {cart.map(prod => <Flex key={prod.id}>
-                            <Image src={prod.image} w={20} />
-                            <Text>{prod.title}</Text>
-                            <Text>{prod.price}</Text>
-                        </Flex>)}
+                        {cart.map(prod => <ProductInCart key={prod.id} {...prod} />)}
                     </DrawerBody>
 
                     <DrawerFooter>
@@ -64,8 +49,7 @@ export function DrawerExample() {
                             Seguir comprando
                         </Button>
                         <Button variant='solid' isDisabled={Boolean(!cart.length)} width='fit-content' colorScheme='brand' onClick={sendMessage}>
-                            {/* <Link isExternal href={`https://wa.me/51940049419?text=${encodeURIComponent(text)}`}>Enviar</Link> */}
-                            Enviar
+                            Enviar Pedido
                         </Button>
 
                     </DrawerFooter>
@@ -74,3 +58,16 @@ export function DrawerExample() {
         </>
     )
 }
+
+const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice }) => {
+    return <Flex gap={4} alignItems='center'>
+        <Image src={image} w={20} />
+        <Text>{title}</Text>
+        <Box>
+            <Text as='del' color='gray.500'>{parseCurrency(regularPrice)}</Text>
+            <Text color='green.500' fontWeight='bold'>{parseCurrency(price)}</Text>
+        </Box>
+    </Flex>
+}
+
+export default Cart; 

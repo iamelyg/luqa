@@ -3,7 +3,6 @@ import { GetStaticProps } from 'next';
 import { Button, Grid, Link, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from '@chakra-ui/react';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
-import QuickView from './components/QuickView';
 import ShopItem from './components/ShopItem';
 
 import api from '@/src/product/api';

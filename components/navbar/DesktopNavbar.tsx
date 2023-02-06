@@ -4,7 +4,7 @@ import Logo from '../../public/logo-luqa-pe.png';
 import Link from 'next/link';
 import { BsMoonStars, BsSun } from 'react-icons/bs';
 
-import { DrawerExample } from '@/pages/tienda/components/Cart';
+import Cart from '@/pages/tienda/components/Cart';
 
 import { INFORMATION } from '@/src/app/constants';
 
@@ -38,7 +38,7 @@ const DesktopNavbar: React.FC = () => {
                         <Icon as={colorMode === 'light' ? BsMoonStars : BsSun} w={5} h={5} />
                         {/* {colorMode === 'light' ? <Icon as={BsMoonStars} w={10} h={10}/> : <Icon as={BsSunFill}/>} */}
                     </Button>
-                    <DrawerExample />
+                    <Cart />
                 </HStack>
 
             </Flex>
