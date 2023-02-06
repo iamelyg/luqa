@@ -6,12 +6,15 @@ import MobileDrawer from '@/components/navbar/Mobile';
 
 import theme from '@/theme';
 import { StoreProvider } from './tienda/context/store.context.d';
+import { useRouter } from 'next/router';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
+  const { pathname } = useRouter();
+
   return (
     <ChakraProvider theme={theme}>
       <StoreProvider>
-        <DesktopNavbar />
+        {pathname !== '/carrito-de-compra' && <DesktopNavbar />}
         <Container
           marginY={4}
           padding={4}
