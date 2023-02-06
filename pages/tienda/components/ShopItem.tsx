@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Grid, Link, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from '@chakra-ui/react';
+import { Button, Grid, Badge, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from '@chakra-ui/react';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 import QuickView from "./QuickView";
@@ -14,6 +14,7 @@ interface Props {
 
 const ShopItem: React.FC<Props> = ({ product }) => {
     const [addingToCart, setAddingToCart] = useState<boolean>(false);
+    const [wasAdded, setWasAdded] = useState<boolean>(false);
 
     const { addToCart } = useStoreContext();
 
@@ -22,6 +23,7 @@ const ShopItem: React.FC<Props> = ({ product }) => {
         setAddingToCart(true);
         setTimeout(() => {
             setAddingToCart(false);
+            setWasAdded(true);
         }, 500);
     }
 
@@ -45,11 +47,12 @@ const ShopItem: React.FC<Props> = ({ product }) => {
                 </Box>
             </Stack>
         </CardBody>
-        <CardFooter paddingTop={0} gap={1}>
+        <CardFooter paddingTop={0} gap={1} flexDirection='column'>
             {/* <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}> */}
             <Button isLoading={addingToCart} loadingText='Agregando' onClick={() => onAddToCart(product)}>
                 Agregar al carrito
             </Button>
+            {wasAdded && <Badge colorScheme='green' fontSize='1rem'>&#10003; Agregado</Badge>}
         </CardFooter>
     </Card>
 }
