@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Box, HStack, Drawer, Heading, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image } from '@chakra-ui/react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
+import Link from 'next/link';
 
 import { useStoreContext } from '../context/store.context.d';
 import { parseCurrency } from '@/src/utils/utilities';
@@ -46,9 +47,12 @@ const Cart: React.FC = () => {
                             <Button variant='outline' mr={3} onClick={onClose}>
                                 Seguir comprando
                             </Button>
-                            <Button variant='solid' isDisabled={Boolean(!cart.length)} width='fit-content' colorScheme='brand' onClick={sendMessage}>
-                                Enviar Pedido
+                            <Button variant='solid' as={Link} onClick={onClose} href='/carrito-de-compra' isDisabled={Boolean(!cart.length)} >
+                                Comprar
                             </Button>
+                            {/* <Button variant='solid' isDisabled={Boolean(!cart.length)} width='fit-content' colorScheme='brand' onClick={sendMessage}>
+                                Enviar Pedido
+                            </Button> */}
                         </Box>
                     </DrawerFooter>
                 </DrawerContent>
