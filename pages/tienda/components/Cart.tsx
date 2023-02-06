@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Box, HStack, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image } from '@chakra-ui/react';
+import { Box, HStack, Drawer, Heading, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image } from '@chakra-ui/react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 
 import { useStoreContext } from '../context/store.context.d';
@@ -57,15 +57,18 @@ const Cart: React.FC = () => {
     )
 }
 
-const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice }) => {
-    return <Flex gap={4} alignItems='center'>
-        <Image src={image} w={20} />
-        <Text>{title}</Text>
-        <Box>
-            <Text as='del' color='gray.500'>{parseCurrency(regularPrice)}</Text>
-            <Text color='green.500' fontWeight='bold'>{parseCurrency(price)}</Text>
+const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, brand }) => {
+    return <HStack gap={4} justifyContent='space-between' alignItems='start' mb={5}>
+        <Image src={image} w={20} borderRadius='1rem'/>
+        <Box flex={1}>
+            <Heading size='xs' as='h6'>{title}</Heading>
+            <Text as='sub' textTransform='uppercase' color='gray.500'>{brand || 'luqa'}</Text>
         </Box>
-    </Flex>
+        <Box>
+            <Text color='green.600' fontWeight='bold'>{parseCurrency(price)}</Text>
+            <Text as='del' color='gray.500'>{parseCurrency(regularPrice)}</Text>
+        </Box>
+    </HStack>
 }
 
 export default Cart; 
