@@ -47,7 +47,7 @@ const ShopItem: React.FC<Props> = ({ product }) => {
         </CardBody>
         <CardFooter paddingTop={0} gap={1}>
             {/* <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}> */}
-            <Button isLoading={addingToCart} loadingText='Agregando' colorScheme='brand' onClick={() => onAddToCart(product)}>
+            <Button isLoading={addingToCart} loadingText='Agregando' onClick={() => onAddToCart(product)}>
                 Agregar al carrito
             </Button>
         </CardFooter>

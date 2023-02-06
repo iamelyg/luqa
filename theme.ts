@@ -35,19 +35,10 @@ export default extendTheme({
           bg: 'red.400',
           boxShadow: '0 0 2px 2px #efdfde',
         },
-        // 4. We can override existing variants
-        solid: (props: StyleFunctionProps) => ({
-          bg: props.colorMode === 'dark' ? 'red.300' : 'red.500',
-        }),
-        // 5. We can add responsive variants
-        sm: {
-          bg: 'teal.500',
-          fontSize: 'md',
-        },
       },
       // 6. We can overwrite defaultProps
       defaultProps: {
-        variant: 'sm', // default is solid
+        variant: 'solid', // default is solid
         colorScheme: 'brand', // default is gray
       },
     },
