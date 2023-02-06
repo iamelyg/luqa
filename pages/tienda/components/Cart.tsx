@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Box, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image } from '@chakra-ui/react';
+import { Box, HStack, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image } from '@chakra-ui/react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 
 import { useStoreContext } from '../context/store.context.d';
@@ -29,29 +29,27 @@ const Cart: React.FC = () => {
             </Button>
             <Text>{cart.length} Productos</Text>
 
-            <Drawer
-                isOpen={isOpen}
-                placement='right'
-                onClose={onClose}
-                size='md'
-            >
+            <Drawer isOpen={isOpen} placement='right' onClose={onClose} size='md'>
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader>Tu carrito</DrawerHeader>
-
                     <DrawerBody>
                         {cart.map(prod => <ProductInCart key={prod.id} {...prod} />)}
                     </DrawerBody>
-
-                    <DrawerFooter>
-                        <Button variant='outline' mr={3} onClick={onClose}>
-                            Seguir comprando
-                        </Button>
-                        <Button variant='solid' isDisabled={Boolean(!cart.length)} width='fit-content' colorScheme='brand' onClick={sendMessage}>
-                            Enviar Pedido
-                        </Button>
-
+                    <DrawerFooter gap={5} flexDirection='column'>
+                        <HStack justifyContent='space-between'>
+                            <Text>Total</Text>
+                            <Text color='green.500' fontWeight='bold'>{parseCurrency(cart.reduce((total, item) => total + item.price, 0))}</Text>
+                        </HStack>
+                        <Box>
+                            <Button variant='outline' mr={3} onClick={onClose}>
+                                Seguir comprando
+                            </Button>
+                            <Button variant='solid' isDisabled={Boolean(!cart.length)} width='fit-content' colorScheme='brand' onClick={sendMessage}>
+                                Enviar Pedido
+                            </Button>
+                        </Box>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
