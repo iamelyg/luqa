@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { GetStaticProps } from "next";
-import { Button, Grid, Link, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup } from "@chakra-ui/react";
+import { Button, Grid, Link, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from "@chakra-ui/react";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 import QuickView from "./components/QuickView";
@@ -38,10 +38,15 @@ const Market: React.FC<Props> = ({ products }) => {
                 alt={product.title} src={product.image} objectFit='cover' borderTopRadius={10} />
               <QuickView selectedProduct={product} />
             </Center>
-            <Stack mt='6' spacing='3'>
-              <Heading size='sm'>{product.title}</Heading>
-              <Text color='green.400' fontWeight='bold' fontSize='xl' justifyContent='space-between' display='flex' ><span>Online</span> {parseCurrency(product.price)}</Text>
-              <Text color='gray.500' fontSize='lg' justifyContent='space-between' display='flex' m={0}><span>Regular</span> <del>{parseCurrency(product.regularPrice)}</del></Text>
+            <Stack mt='6' spacing={4}>
+              <Box>
+                <Heading size='sm'>{product.title}</Heading>
+                <Text as='sub' textTransform='uppercase' color='gray.500'>{product.brand || 'luqa'}</Text>
+              </Box>
+              <Box>
+                <Text color='green.400' fontWeight='bold' fontSize='xl' justifyContent='space-between' display='flex' ><span>Online</span> {parseCurrency(product.price)}</Text>
+                <Text color='gray.500' fontSize='lg' justifyContent='space-between' display='flex' m={0}><span>Regular</span> <del>{parseCurrency(product.regularPrice)}</del></Text>
+              </Box>
             </Stack>
 
           </CardBody>
