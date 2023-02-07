@@ -1,4 +1,4 @@
-export const INFORMATION: Infomation = {
+export const INFORMATION: Information = {
   logo: "https://via.placeholder.com/150",
   banner: "",
   title: "Luqa",
@@ -16,20 +16,35 @@ export const INFORMATION: Infomation = {
       icon: "fa-headset",
     },
   ],
+  cart: [
+    { label: 'Correo', placeholder: 'Ingresa tu correo', type: 'email' },
+    { label: 'Nombre', placeholder: 'Ingresa tu nombre', type: 'text' },
+    { label: 'Apellidos', placeholder: 'Ingresa tu apellido', type: 'text' },
+    { label: 'Doc. identidad', placeholder: 'Ingresa tu n° doc. identidad', type: 'text' },
+    { label: 'Celular', placeholder: 'Ingresa tu n° celular', type: 'text' },
+  ]
 };
 
-interface Infomation {
-  logo: string;
-  banner: string;
-  title: string;
+export interface Information {
+  logo:        string;
+  banner:      string;
+  title:       string;
   description: string;
-  phone: string;
-  sheet: string;
-  color: string;
-  menu: Menu[];
+  phone:       string;
+  sheet:       string;
+  color:       string;
+  menu:        Menu[];
+  cart:        Cart[];
 }
-interface Menu {
+
+export interface Cart {
+  label:       string;
+  placeholder: string;
+  type:        string;
+}
+
+export interface Menu {
   label: string;
-  slug: string;
-  icon: string;
+  slug:  string;
+  icon:  string;
 }
