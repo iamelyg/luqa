@@ -16,35 +16,48 @@ export const INFORMATION: Information = {
       icon: "fa-headset",
     },
   ],
-  cart: [
-    { label: 'Correo', placeholder: 'Ingresa tu correo', type: 'email' },
-    { label: 'Nombre', placeholder: 'Ingresa tu nombre', type: 'text' },
-    { label: 'Apellidos', placeholder: 'Ingresa tu apellido', type: 'text' },
-    { label: 'Doc. identidad', placeholder: 'Ingresa tu n° doc. identidad', type: 'text' },
-    { label: 'Celular', placeholder: 'Ingresa tu n° celular', type: 'text' },
-  ]
+  cart: {
+    identification: [
+      { label: 'Correo', placeholder: 'Ingresa tu correo', type: 'email' },
+      { label: 'Nombres y Apellidos', placeholder: 'Ingresa tu nombre', type: 'text' },
+      { label: 'Doc. identidad', placeholder: 'Ingresa tu n° doc. identidad', type: 'text' },
+      { label: 'Celular', placeholder: 'Ingresa tu n° celular', type: 'text' },
+    ],
+    location: [
+      { label: 'Dirección', placeholder: 'Ingresa tu dirección ', type: 'text' },
+      { label: 'Distrito', placeholder: 'Ingresa tu dirección ', type: 'text' },
+      { label: 'Provincia', placeholder: 'Ingresa tu dirección ', type: 'text' },
+      { label: 'Departamento', placeholder: 'Ingresa tu dirección ', type: 'text' },
+      { label: 'Referencia', placeholder: 'Ingresa tu dirección ', type: 'text' },
+    ]
+  }
 };
 
 export interface Information {
-  logo:        string;
-  banner:      string;
-  title:       string;
+  logo: string;
+  banner: string;
+  title: string;
   description: string;
-  phone:       string;
-  sheet:       string;
-  color:       string;
-  menu:        Menu[];
-  cart:        Cart[];
+  phone: string;
+  sheet: string;
+  color: string;
+  menu: Menu[];
+  cart: Cart;
 }
 
 export interface Cart {
-  label:       string;
+  identification: Input[];
+  location: Input[];
+}
+
+export interface Input {
+  label: string;
   placeholder: string;
-  type:        string;
+  type: string;
 }
 
 export interface Menu {
   label: string;
-  slug:  string;
-  icon:  string;
+  slug: string;
+  icon: string;
 }
