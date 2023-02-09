@@ -35,16 +35,15 @@ export function DrawerExample() {
 
     return (
         <>
-            <Button onClick={onOpen} colorScheme='brand' variant='ghost' h={68} w={68} borderRadius={999} >
-                <Icon as={MdOutlineShoppingCart} w={9} h={9} />
+            <Button onClick={onOpen} colorScheme='brand' variant='ghost' leftIcon={<Icon as={MdOutlineShoppingCart} w={5} h={5} />}>
+                {cart.length} Productos
             </Button>
-            <Text>{cart.length} Productos</Text>
 
             <Drawer
                 isOpen={isOpen}
                 placement='right'
                 onClose={onClose}
-                // size='xl'
+            // size='xl'
             >
                 <DrawerOverlay />
                 <DrawerContent>
