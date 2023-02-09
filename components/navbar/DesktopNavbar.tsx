@@ -34,9 +34,8 @@ const DesktopNavbar: React.FC = () => {
                     </HStack>
                 </HStack>
                 <HStack>
-                    <Button colorScheme='brand' onClick={toggleColorMode} h={10} w={10} variant='ghost'>
-                        <Icon as={colorMode === 'light' ? BsMoonStars : BsSun} w={5} h={5} />
-                        {/* {colorMode === 'light' ? <Icon as={BsMoonStars} w={10} h={10}/> : <Icon as={BsSunFill}/>} */}
+                    <Button colorScheme='brand' onClick={toggleColorMode}  variant='ghost' leftIcon={ <Icon as={colorMode === 'light' ? BsMoonStars : BsSun} w={5} h={5} />}>
+                        {colorMode === 'light' ? 'Oscuro' : 'Claro'}
                     </Button>
                     <DrawerExample />
                 </HStack>
