@@ -16,6 +16,26 @@ export const INFORMATION: Infomation = {
       icon: "fa-headset",
     },
   ],
+  footer: [
+    {
+      title: "Tienda",
+      submenu: [{ label: "Soundpeats", slug: "/soundpeats" }],
+    },
+    {
+      title: "Somos Luqa",
+      submenu: [
+        { label: "nuestros clientes", slug: "/nuestros-clientes" },
+        { label: "nosotros", slug: "/nosotros" },
+      ],
+    },
+    {
+      title: "Ayuda al cliente",
+      submenu: [
+        { label: "contáctanos", slug: "/contactanos" },
+        { label: "FAQ", slug: "/faq" },
+      ],
+    },
+  ],
 };
 
 interface Infomation {
@@ -27,9 +47,18 @@ interface Infomation {
   sheet: string;
   color: string;
   menu: Menu[];
+  footer: Footer[];
 }
 interface Menu {
   label: string;
   slug: string;
   icon: string;
+}
+export interface Footer {
+  title: string;
+  submenu: Link[];
+}
+export interface Link {
+  label: string;
+  slug: string;
 }
