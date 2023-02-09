@@ -7,9 +7,9 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useDisclosure, Link,
+    useDisclosure, IconButton,
     Button, Text,
-    Icon, Flex, Image
+    Icon, Flex, Image, Box
 } from '@chakra-ui/react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 
@@ -35,10 +35,12 @@ export function DrawerExample() {
 
     return (
         <>
-            <Button onClick={onOpen} colorScheme='brand' variant='ghost' leftIcon={<Icon as={MdOutlineShoppingCart} w={5} h={5} />}>
-                {cart.length} Productos
-            </Button>
-
+            <Box position='relative'>
+                <IconButton aria-label='Search database' onClick={onOpen} colorScheme='brand' variant='ghost' icon={<Icon as={MdOutlineShoppingCart} w={6} h={6} />} />
+                <Text as='mark' position='absolute' top={-2} right={-2} bg='brand.300' color='white' fontSize='sm' h={6} w={6} borderRadius={100} display='flex' justifyContent='center' alignItems='center'>
+                    {cart.length}
+                </Text>
+            </Box>
             <Drawer
                 isOpen={isOpen}
                 placement='right'
