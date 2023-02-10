@@ -19,20 +19,27 @@ export const INFORMATION: Infomation = {
   footer: [
     {
       title: "Tienda",
-      submenu: [{ label: "Soundpeats", slug: "/soundpeats" }],
+      submenu: [
+        { label: "Soundpeats", slug: "/soundpeats" },
+        { label: "Promos y cupones", slug: "/promos-cupones" },
+      ],
     },
     {
       title: "Somos Luqa",
       submenu: [
         { label: "nuestros clientes", slug: "/nuestros-clientes" },
         { label: "nosotros", slug: "/nosotros" },
+        { label: "trabaja con nosotros", slug: "/trabaja" },
       ],
     },
     {
       title: "Ayuda al cliente",
       submenu: [
         { label: "contáctanos", slug: "/contactanos" },
+        { label: "Delivery", slug: "/delivery" },
         { label: "FAQ", slug: "/faq" },
+        { label: "Rastrea mi pedido", slug: "/rastrea-mi-pedido" },
+        { label: "Gift cards", slug: "/gift-card" },
       ],
     },
   ],
