@@ -10,7 +10,7 @@ import { INFORMATION } from '@/app/constants';
 const Footer: React.FC = () => {
     return (
         <chakra.footer bg='brand.800' color='whiteAlpha.900' >
-            <VStack maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto'>
+            <VStack maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={20}>
                 <Box mb={7}>
                     <Text>Sé el primero en conocer lo nuevo de Luqa</Text>
                     <HStack >
@@ -32,8 +32,10 @@ const Footer: React.FC = () => {
                     </VStack>)}
                     <Stack >
                         <Text>Conversa con uno de nuestros especialistas</Text>
-                        <Text>josehuarcaya@luqa.pe</Text>
+                        <Text>hola@luqa.pe</Text>
                         <Text>+5198765431</Text>
+                        <Button>Llámanos</Button>
+                        <Button>Escríbenos a whatsapp</Button>
                     </Stack>
 
                 </SimpleGrid>
