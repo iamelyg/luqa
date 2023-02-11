@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Image, Flex, Button, HStack, useColorMode, useColorModeValue, chakra, Icon } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
 import Link from 'next/link';
@@ -9,11 +9,38 @@ import { DrawerExample } from '@/pages/tienda/components/Cart';
 import { INFORMATION } from '@/app/constants';
 
 const DesktopNavbar: React.FC = () => {
+    const [visible, setVisible] = useState<Boolean>(true);
+
     const { colorMode, toggleColorMode } = useColorMode();
 
-    const shadow = useColorModeValue('lg', 'sm')
+    const shadow = useColorModeValue('lg', 'sm');
+
+    useEffect(() => {
+        let previousScrollPosition = 0;
+        let currentScrollPosition = 0;
+
+        window.addEventListener('scroll', function (e) {
+
+            // Get the new Value
+            currentScrollPosition = window.pageYOffset;
+
+            //Subtract the two and conclude
+            if (previousScrollPosition - currentScrollPosition < 0) {
+                setVisible(false);
+            } else if (previousScrollPosition - currentScrollPosition > 0) {
+                setVisible(true);
+            }
+
+            // Update the previous value
+            previousScrollPosition = currentScrollPosition;
+        });
+    }, []);
+
+    console.log('visble', visible)
+
+
     return (
-        <chakra.header position={{ base: 'relative', md: 'sticky' }} top={0} zIndex={1} shadow={shadow} >
+        <chakra.header position={visible ? 'sticky' : 'relative'} top={0} zIndex={1} shadow={shadow} >
             <Flex w="100%" px="6" py="5" justify="space-between">
                 <HStack gap={6}>
                     <Link href='/'>
