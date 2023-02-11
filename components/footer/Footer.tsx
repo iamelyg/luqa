@@ -10,8 +10,8 @@ import { INFORMATION } from '@/app/constants';
 const Footer: React.FC = () => {
     return (
         <chakra.footer>
-            <VStack maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={{ base: 5, md: 20}}>
-                <Box mb={7} w={{ base: '100%', md: '50%'}}>
+            <VStack maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={{ base: 5, md: 20 }}>
+                <Box mb={7} w={{ base: '100%', md: '50%' }}>
                     <Text>Sé el primero en conocer lo nuevo de Luqa</Text>
                     <HStack >
                         <Input
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
                     {INFORMATION.footer.map((menu, id) => <Stack key={id} w={40}>
                         <Text fontSize='md' fontWeight='bold'>{menu.title}</Text>
                         <UnorderedList listStyleType='none'>
-                            {menu.submenu.map(sub => <ListItem key={sub.slug}  mb={2} _hover={{ color: 'brand.500'}}>
+                            {menu.submenu.map(sub => <ListItem key={sub.slug} mb={2} _hover={{ color: 'brand.500' }}>
                                 <Link as={NextLink} href={sub.slug}>{sub.label}</Link>
                             </ListItem>)}
                         </UnorderedList>
@@ -42,20 +42,10 @@ const Footer: React.FC = () => {
 
                 </SimpleGrid>
 
-                {/* <HStack justifyContent='center' gap={8} alignItems='start' wrap='wrap'>
-                    {INFORMATION.footer.map((menu) => <VStack key={menu.title} w={40}>
-                        <Text>{menu.title}</Text>
-                        <UnorderedList listStyleType='none'>
-                            {menu.submenu.map(sub => <ListItem key={sub.slug}><Link href={sub.slug}>{sub.label}</Link></ListItem>)}
-                        </UnorderedList>
-                    </VStack>)}
-                    <Stack >
-                        <Text>Conversa con uno de nuestros especialistas</Text>
-                        <Text>josehuarcaya@luqa.pe</Text>
-                        <Text>+5198765431</Text>
-                    </Stack>
-                </HStack> */}
             </VStack>
+            <HStack bg='brand.700' color='whiteAlpha.800' py={4} justifyContent='center'>
+                <Text as='span' fontSize='xs'>Hecho con amor por © 2023 Luqa, Lima - Perú</Text>
+            </HStack>
         </chakra.footer>
     );
 }

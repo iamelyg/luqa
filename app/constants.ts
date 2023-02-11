@@ -40,7 +40,7 @@ export const INFORMATION: Infomation = {
       submenu: [
         { label: "Contáctanos", slug: "/contactanos" },
         { label: "Delivery", slug: "/delivery" },
-        { label: "¿Cómo comprar en luqa.pe?", slug: "/delivery" },
+        { label: "¿Cómo comprar en luqa.pe?", slug: "/como-comprar" },
         { label: "Preguntas frecuentes", slug: "/faq" },
         { label: "Rastrea mi pedido", slug: "/rastrea-mi-pedido" },
       ],
