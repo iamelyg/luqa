@@ -3,6 +3,7 @@ import { Image, Flex, Button, HStack, useColorMode, useColorModeValue, chakra, I
 import Logo from '../../public/logo-luqa-pe.png';
 import Link from 'next/link';
 import { BsMoonStars, BsSun } from 'react-icons/bs';
+import { motion } from "framer-motion"
 
 import { DrawerExample } from '@/pages/tienda/components/Cart';
 
@@ -20,27 +21,19 @@ const DesktopNavbar: React.FC = () => {
         let currentScrollPosition = 0;
 
         window.addEventListener('scroll', function (e) {
-
-            // Get the new Value
             currentScrollPosition = window.pageYOffset;
-
-            //Subtract the two and conclude
             if (previousScrollPosition - currentScrollPosition < 0) {
                 setVisible(false);
             } else if (previousScrollPosition - currentScrollPosition > 0) {
                 setVisible(true);
             }
-
-            // Update the previous value
             previousScrollPosition = currentScrollPosition;
         });
     }, []);
 
-    console.log('visble', visible)
-
-
     return (
-        <chakra.header position={visible ? 'sticky' : 'relative'} top={0} zIndex={1} shadow={shadow} >
+        <chakra.header as={motion.header} initial={{ translateY: -40 }} whileInView={{ translateY: 0 }} exit={{ translateY: -10 }}
+            position={visible ? 'sticky' : 'relative'} top={0} zIndex={1} shadow={shadow} >
             <Flex w="100%" px="6" py="5" justify="space-between">
                 <HStack gap={6}>
                     <Link href='/'>
