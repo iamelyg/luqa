@@ -9,7 +9,7 @@ import { INFORMATION } from '@/app/constants';
 
 const Footer: React.FC = () => {
     return (
-        <chakra.footer bg='brand.800' color='whiteAlpha.900' >
+        <chakra.footer>
             <VStack maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={20}>
                 <Box mb={7}>
                     <Text>Sé el primero en conocer lo nuevo de Luqa</Text>
@@ -24,12 +24,12 @@ const Footer: React.FC = () => {
                 </Box>
 
                 <SimpleGrid columns={{ base: 1, sm: 3, md: 4 }}>
-                    {INFORMATION.footer.map((menu) => <VStack key={menu.title} w={40}>
+                    {INFORMATION.footer.map((menu) => <Stack key={menu.title} w={40}>
                         <Text>{menu.title}</Text>
                         <UnorderedList listStyleType='none'>
                             {menu.submenu.map(sub => <ListItem key={sub.slug}><Link href={sub.slug}>{sub.label}</Link></ListItem>)}
                         </UnorderedList>
-                    </VStack>)}
+                    </Stack>)}
                     <Stack >
                         <Text>Conversa con uno de nuestros especialistas</Text>
                         <Text>hola@luqa.pe</Text>
