@@ -10,11 +10,6 @@ export const INFORMATION: Infomation = {
   menu: [
     { label: "Inicio", slug: "/", icon: "fa-home" },
     { label: "Tienda", slug: "/tienda", icon: "fa-shop" },
-    {
-      label: "Atención al cliente",
-      slug: "/atencion-cliente",
-      icon: "fa-headset",
-    },
   ],
   footer: [
     {

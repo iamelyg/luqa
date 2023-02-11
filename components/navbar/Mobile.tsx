@@ -10,7 +10,7 @@ const MobileMenu: React.FC = () => {
     const { visible } = useShowMenu(true);
 
     return <chakra.header as={motion.header} initial={{ translateY: 40 }} whileInView={{ translateY: 0 }} exit={{ translateY: 10 }}
-        display={{ base: "flex", md: "none" }} margin={3} padding={2}
+        display={{ base: "flex", sm: "none" }} margin={3} padding={2}
         borderRadius='1.2rem' position={visible ? 'fixed' : 'relative'} bottom={0} left={0} right={0} gap={4} justifyContent='center'>
         {INFORMATION.menu.map((item, i) => (
             <Flex key={i} href={item.slug} as={Link}
@@ -23,7 +23,7 @@ const MobileMenu: React.FC = () => {
                     color: "primary.500",
                 }}>
                 <IconLuqa className={`fa-solid ${item.icon}`} />
-                <Text>{item.label}</Text>
+                <Text fontSize='xs'>{item.label}</Text>
             </Flex>
         ))}
     </chakra.header>

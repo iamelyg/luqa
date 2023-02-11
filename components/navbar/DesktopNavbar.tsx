@@ -24,7 +24,7 @@ const DesktopNavbar: React.FC = () => {
                     <Link href='/'>
                         <Image src={Logo.src} h={50} w={150} />
                     </Link>
-                    <HStack as="nav" spacing="5" display={{ base: "none", md: "flex" }}>
+                    <HStack as="nav" spacing="5" display={{ base: "none", sm: "flex" }}>
                         {INFORMATION.menu.map((item, i) => (
                             <Link key={i} href={item.slug}>
                                 {item.label}
