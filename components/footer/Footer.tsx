@@ -1,7 +1,7 @@
 import React from "react";
-import { SimpleGrid, Flex, Button, HStack, chakra, Icon, Text, VStack, ListItem, IconButton, UnorderedList, Stack, Container, Input, Box } from '@chakra-ui/react';
+import { SimpleGrid, Link, Button, HStack, chakra, Icon, Text, VStack, ListItem, IconButton, UnorderedList, Stack, Container, Input, Box } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { FaPaperPlane } from 'react-icons/fa';
 
 
@@ -27,7 +27,9 @@ const Footer: React.FC = () => {
                     {INFORMATION.footer.map((menu) => <Stack key={menu.title} w={40}>
                         <Text fontSize='lg' fontWeight='bold'>{menu.title}</Text>
                         <UnorderedList listStyleType='none'>
-                            {menu.submenu.map(sub => <ListItem key={sub.slug} ><Link href={sub.slug}>{sub.label}</Link></ListItem>)}
+                            {menu.submenu.map(sub => <ListItem key={sub.slug}  mb={2} _hover={{ color: 'brand.500'}}>
+                                <Link as={NextLink} href={sub.slug}>{sub.label}</Link>
+                            </ListItem>)}
                         </UnorderedList>
                     </Stack>)}
                     <Stack >
