@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Image, Flex, Button, HStack, useColorMode, useColorModeValue, chakra, Icon } from '@chakra-ui/react';
 import Logo from '../../public/logo-luqa-pe.png';
 import Link from 'next/link';
@@ -6,30 +6,15 @@ import { BsMoonStars, BsSun } from 'react-icons/bs';
 import { motion } from "framer-motion"
 
 import { DrawerExample } from '@/pages/tienda/components/Cart';
+import useShowMenu from "./useShowMenu";
 
 import { INFORMATION } from '@/app/constants';
 
 const DesktopNavbar: React.FC = () => {
-    const [visible, setVisible] = useState<Boolean>(true);
-
     const { colorMode, toggleColorMode } = useColorMode();
-
     const shadow = useColorModeValue('lg', 'sm');
 
-    useEffect(() => {
-        let previousScrollPosition = 0;
-        let currentScrollPosition = 0;
-
-        window.addEventListener('scroll', function (e) {
-            currentScrollPosition = window.pageYOffset;
-            if (previousScrollPosition - currentScrollPosition < 0) {
-                setVisible(false);
-            } else if (previousScrollPosition - currentScrollPosition > 0) {
-                setVisible(true);
-            }
-            previousScrollPosition = currentScrollPosition;
-        });
-    }, []);
+    const { visible} = useShowMenu(true);
 
     return (
         <chakra.header as={motion.header} initial={{ translateY: -40 }} whileInView={{ translateY: 0 }} exit={{ translateY: -10 }}
