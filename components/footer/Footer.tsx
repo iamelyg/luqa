@@ -10,8 +10,8 @@ import { INFORMATION } from '@/app/constants';
 const Footer: React.FC = () => {
     return (
         <chakra.footer>
-            <VStack maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={20}>
-                <Box mb={7}>
+            <VStack maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={{ base: 5, md: 20}}>
+                <Box mb={7} w={{ base: '100%', md: '50%'}}>
                     <Text>Sé el primero en conocer lo nuevo de Luqa</Text>
                     <HStack >
                         <Input
@@ -23,8 +23,8 @@ const Footer: React.FC = () => {
                     </HStack>
                 </Box>
 
-                <SimpleGrid columns={{ base: 1, sm: 3, md: 4 }}>
-                    {INFORMATION.footer.map((menu) => <Stack key={menu.title} w={40}>
+                <SimpleGrid columns={{ base: 1, sm: 3, md: 4 }} gap={4}>
+                    {INFORMATION.footer.map((menu, id) => <Stack key={id} w={40}>
                         <Text fontSize='md' fontWeight='bold'>{menu.title}</Text>
                         <UnorderedList listStyleType='none'>
                             {menu.submenu.map(sub => <ListItem key={sub.slug}  mb={2} _hover={{ color: 'brand.500'}}>
