@@ -26,9 +26,9 @@ const DesktopNavbar: React.FC = () => {
                     </Link>
                     <HStack as="nav" spacing="5">
                         {INFORMATION.menu.map((item, i) => (
-                            <Link key={i} href={item.slug}>
+                            <Button  as={Link} key={i} href={item.slug}>
                                 {item.label}
-                            </Link>
+                            </Button>
                         ))}
                     </HStack>
                 </HStack>
