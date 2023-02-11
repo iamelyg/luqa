@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from "framer-motion"
 
 import useShowMenu from "./useShowMenu";
+import { DrawerExample } from "@/pages/tienda/components/Cart";
 
 const MobileMenu: React.FC = () => {
     const { visible } = useShowMenu(true);
@@ -26,6 +27,7 @@ const MobileMenu: React.FC = () => {
                 <Text fontSize='xs'>{item.label}</Text>
             </Flex>
         ))}
+         <DrawerExample />
     </chakra.header>
 }
 

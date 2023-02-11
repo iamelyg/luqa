@@ -18,13 +18,13 @@ const DesktopNavbar: React.FC = () => {
 
     return (
         <chakra.header as={motion.header} initial={{ translateY: -40 }} whileInView={{ translateY: 0 }} exit={{ translateY: -10 }}
-            position={visible ? 'sticky' : 'relative'} top={0} zIndex={1} shadow={shadow} >
+            position={visible ? 'sticky' : 'relative'} top={0} zIndex={1} shadow={shadow}  display={{ base: "none", sm: "flex" }}>
             <Flex w="100%" px="6" py="5" justify="space-between">
                 <HStack gap={6}>
                     <Link href='/'>
                         <Image src={Logo.src} h={50} w={150} />
                     </Link>
-                    <HStack as="nav" spacing="5" display={{ base: "none", sm: "flex" }}>
+                    <HStack as="nav" spacing="5">
                         {INFORMATION.menu.map((item, i) => (
                             <Link key={i} href={item.slug}>
                                 {item.label}
