@@ -10,14 +10,15 @@ import { INFORMATION } from '@/app/constants';
 const Footer: React.FC = () => {
     return (
         <chakra.footer>
-            <VStack maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={{ base: 5, md: 20 }}>
-                <Box mb={7} w={{ base: '100%', md: '50%' }}>
-                    <Text>Sé el primero en conocer lo nuevo de Luqa</Text>
+            <VStack  gap={10} maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={{ base: 5, md: 20 }}>
+                <Box w={{ base: '90%', md: '60%', lg: '50%' }}>
+                    <Text fontWeight='bold' textAlign='center' mb={3}>Sé el primero en conocer lo nuevo de Luqa</Text>
                     <HStack >
                         <Input
                             placeholder="Ingresa tu correo"
                             size="md"
                             type="email"
+                            variant='filled'
                         />
                         <IconButton aria-label='Search database' colorScheme='brand' icon={<Icon as={FaPaperPlane} w={6} h={6} />} />
                     </HStack>
@@ -44,7 +45,7 @@ const Footer: React.FC = () => {
 
             </VStack>
             <HStack bg='brand.700' color='whiteAlpha.800' py={4} justifyContent='center'>
-                <Text as='span' fontSize='xs'>Hecho con amor por © 2023 Luqa, Lima - Perú</Text>
+                <Text as='span' fontSize='xs'>© 2023 Luqa, Lima - Perú</Text>
             </HStack>
         </chakra.footer>
     );
