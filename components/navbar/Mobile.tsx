@@ -2,13 +2,14 @@ import { INFORMATION } from "@/app/constants";
 import { Flex, Text, chakra } from "@chakra-ui/react";
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { motion } from "framer-motion"
 
 import useShowMenu from "./useShowMenu";
 
 const MobileMenu: React.FC = () => {
     const { visible } = useShowMenu(true);
 
-    return <chakra.header
+    return <chakra.header as={motion.header} initial={{ translateY: 40 }} whileInView={{ translateY: 0 }} exit={{ translateY: 10 }}
         display={{ base: "flex", md: "none" }} margin={3} padding={2}
         borderRadius='1.2rem' position={visible ? 'fixed' : 'relative'} bottom={0} left={0} right={0} gap={4} justifyContent='center'>
         {INFORMATION.menu.map((item, i) => (
