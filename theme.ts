@@ -33,9 +33,11 @@ export default extendTheme({
         color: mode("gray.800", "whiteAlpha.900")(props),
         bg: mode("bg.light.500", "bg.dark.500")(props),
       },
+      header: {
+        bg: mode("bg.light.500", "bg.dark.500")(props),
+      },
       footer: {
         bg: mode("bg.light.600", "bg.dark.600")(props),
-
       }
     }),
   },
