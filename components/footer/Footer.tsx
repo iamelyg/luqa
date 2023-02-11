@@ -25,13 +25,13 @@ const Footer: React.FC = () => {
 
                 <SimpleGrid columns={{ base: 1, sm: 3, md: 4 }}>
                     {INFORMATION.footer.map((menu) => <Stack key={menu.title} w={40}>
-                        <Text>{menu.title}</Text>
+                        <Text fontSize='lg' fontWeight='bold'>{menu.title}</Text>
                         <UnorderedList listStyleType='none'>
-                            {menu.submenu.map(sub => <ListItem key={sub.slug}><Link href={sub.slug}>{sub.label}</Link></ListItem>)}
+                            {menu.submenu.map(sub => <ListItem key={sub.slug} ><Link href={sub.slug}>{sub.label}</Link></ListItem>)}
                         </UnorderedList>
                     </Stack>)}
                     <Stack >
-                        <Text>Conversa con uno de nuestros especialistas</Text>
+                        <Text fontSize='lg' fontWeight='bold'>Conversa con uno de nuestros especialistas</Text>
                         <Text>hola@luqa.pe</Text>
                         <Text>+5198765431</Text>
                         <Button>Llámanos</Button>
