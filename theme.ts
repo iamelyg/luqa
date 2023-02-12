@@ -1,19 +1,18 @@
-import { extendTheme, theme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 import type { StyleFunctionProps } from "@chakra-ui/styled-system";
 
-import { INFORMATION } from "./src/app/constants";
-
 export default extendTheme({
   colors: {
-    primary: {
-      10: "rgba(1, 102, 253, .1)",
-      100: theme.colors[INFORMATION.color],
-    },
-    bgBody: "#070e27",
-    gray: {
-      700: "#0C1946",
-      800: "#070e27",
+    bg: {
+      dark: {
+        500: '#070e27',
+        600: '#060C23',
+      },
+      light: {
+        500: '#EBF2FF', 
+        600: '#D6E4FF',
+      }
     },
     brand: {
       50: "#e6eefe",
@@ -47,8 +46,14 @@ export default extendTheme({
     global: (props: StyleFunctionProps) => ({
       body: {
         color: mode("gray.800", "whiteAlpha.900")(props),
-        bg: mode("#EBF2FF", "gray.800")(props),
+        bg: mode("bg.light.500", "bg.dark.500")(props),
       },
+      header: {
+        bg: mode("bg.light.500", "bg.dark.500")(props),
+      },
+      footer: {
+        bg: mode("bg.light.600", "bg.dark.600")(props),
+      }
     }),
   },
 });

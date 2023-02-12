@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Box, HStack, Drawer, Heading, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image } from '@chakra-ui/react';
+import { Box, HStack, Drawer, IconButton, Heading, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image } from '@chakra-ui/react';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';
 
@@ -25,12 +25,18 @@ const Cart: React.FC = () => {
 
     return (
         <>
-            <Button onClick={onOpen} colorScheme='brand' variant='ghost' h={68} w={68} borderRadius={999} >
-                <Icon as={MdOutlineShoppingCart} w={9} h={9} />
-            </Button>
-            <Text>{cart.length} Productos</Text>
-
-            <Drawer isOpen={isOpen} placement='right' onClose={onClose} size='md'>
+            <Box position='relative'>
+                <IconButton aria-label='Search database' onClick={onOpen} colorScheme='brand' variant='ghost' icon={<Icon as={MdOutlineShoppingCart} w={6} h={6} />} />
+                <Text as='mark' position='absolute' top={-2} right={-2} bg='brand.300' color='white' fontSize='sm' h={6} w={6} borderRadius={100} display='flex' justifyContent='center' alignItems='center'>
+                    {cart.length}
+                </Text>
+            </Box>
+            <Drawer
+                isOpen={isOpen}
+                placement='right'
+                onClose={onClose}
+            // size='xl'
+            >
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
