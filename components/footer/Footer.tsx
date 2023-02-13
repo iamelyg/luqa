@@ -9,7 +9,7 @@ import { INFORMATION } from '@/app/constants';
 
 const Footer: React.FC = () => {
     return (
-        <chakra.footer>
+        <chakra.footer className='main'>
             <VStack  gap={10} maxW={{ base: '100%', xl: 'container.xl' }} py={10} m='auto' px={{ base: 5, md: 20 }}>
                 <Box w={{ base: '90%', md: '60%', lg: '50%' }}>
                     <Text fontWeight='bold' textAlign='center' mb={3}>Sé el primero en conocer lo nuevo de Luqa</Text>

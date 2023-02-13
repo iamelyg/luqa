@@ -44,14 +44,11 @@ export default extendTheme({
   },
   styles: {
     global: (props: StyleFunctionProps) => ({
-      body: {
+      'body, header.main': {
         color: mode("gray.800", "whiteAlpha.900")(props),
         bg: mode("bg.light.500", "bg.dark.500")(props),
       },
-      header: {
-        bg: mode("bg.light.500", "bg.dark.500")(props),
-      },
-      footer: {
+      'footer.main': {
         bg: mode("bg.light.600", "bg.dark.600")(props),
       }
     }),

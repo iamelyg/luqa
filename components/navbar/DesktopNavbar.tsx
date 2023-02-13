@@ -17,7 +17,7 @@ const DesktopNavbar: React.FC = () => {
     const { visible} = useShowMenu(true);
 
     return (
-        <chakra.header as={motion.header} initial={{ translateY: -40 }} whileInView={{ translateY: 0 }} exit={{ translateY: -10 }}
+        <chakra.header className='main' as={motion.header} initial={{ translateY: -40 }} whileInView={{ translateY: 0 }} exit={{ translateY: -10 }}
             position={visible ? 'sticky' : 'relative'} top={0} zIndex={1} shadow={shadow}  display={{ base: "none", sm: "flex" }}>
             <Flex w="100%" px="6" py="5" justify="space-between">
                 <HStack gap={6}>
