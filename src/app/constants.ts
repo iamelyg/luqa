@@ -10,10 +10,35 @@ export const INFORMATION: Information = {
   menu: [
     { label: "Inicio", slug: "/", icon: "fa-home" },
     { label: "Tienda", slug: "/tienda", icon: "fa-shop" },
+  ],
+  footer: [
     {
-      label: "Atención al cliente",
-      slug: "/atencion-cliente",
-      icon: "fa-headset",
+      title: "Tienda",
+      submenu: [
+        { label: "Soundpeats", slug: "/soundpeats" },
+        { label: "KZ", slug: "/kz" },
+        { label: "Fonge", slug: "/fonge" },
+        { label: "Promos y cupones", slug: "/promos-cupones" },
+        { label: "Gift cards", slug: "/gift-card" },
+      ],
+    },
+    {
+      title: "Somos Luqa",
+      submenu: [
+        { label: "Nuestros clientes", slug: "/nuestros-clientes" },
+        { label: "Trabaja con nosotros", slug: "/trabaja" },
+        { label: "Nosotros", slug: "/nosotros" },
+      ],
+    },
+    {
+      title: "Servicio al cliente",
+      submenu: [
+        { label: "Contáctanos", slug: "/contactanos" },
+        { label: "Delivery", slug: "/delivery" },
+        { label: "¿Cómo comprar en luqa.pe?", slug: "/como-comprar" },
+        { label: "Preguntas frecuentes", slug: "/faq" },
+        { label: "Rastrea mi pedido", slug: "/rastrea-mi-pedido" },
+      ],
     },
   ],
   cart: {
@@ -42,6 +67,7 @@ export interface Information {
   sheet: string;
   color: string;
   menu: Menu[];
+  footer: Footer[];
   cart: Cart;
 }
 
@@ -60,4 +86,12 @@ export interface Menu {
   label: string;
   slug: string;
   icon: string;
+}
+export interface Footer {
+  title: string;
+  submenu: Link[];
+}
+export interface Link {
+  label: string;
+  slug: string;
 }

@@ -1,9 +1,9 @@
 import { ChakraProvider, Container } from '@chakra-ui/react';
 import { AppProps } from 'next/app';
 
-import DesktopNavbar from '@/components/navbar/DesktopNavbar';
-import MobileDrawer from '@/components/navbar/Mobile';
-import Footer from '@/components/footer/Footer';
+import DesktopNavbar from '@/src/components/navbar/DesktopNavbar';
+import MobileDrawer from '@/src/components/navbar/Mobile';
+import Footer from '@/src/components/footer/Footer';
 
 import theme from '@/theme';
 import { StoreProvider } from './tienda/context/store.context.d';

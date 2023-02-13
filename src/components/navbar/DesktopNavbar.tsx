@@ -1,6 +1,5 @@
 import React from "react";
 import { Image, Flex, Button, HStack, useColorMode, useColorModeValue, chakra, Icon } from '@chakra-ui/react';
-import Logo from '../../public/logo-luqa-pe.png';
 import Link from 'next/link';
 import { BsMoonStars, BsSun } from 'react-icons/bs';
 import { motion } from "framer-motion"
@@ -9,6 +8,8 @@ import Cart from '@/pages/tienda/components/Cart';
 import useShowMenu from "./useShowMenu";
 
 import { INFORMATION } from '@/src/app/constants';
+
+import Logo from '../../../public/logo-luqa-pe.png';
 
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();

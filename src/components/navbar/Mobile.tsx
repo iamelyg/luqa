@@ -1,4 +1,3 @@
-import { INFORMATION } from "@/app/constants";
 import { Flex, Text, chakra, Button } from "@chakra-ui/react";
 import styled from '@emotion/styled';
 import Link from 'next/link';
@@ -6,6 +5,8 @@ import { motion } from "framer-motion"
 
 import useShowMenu from "./useShowMenu";
 import Cart from "@/pages/tienda/components/Cart";
+
+import { INFORMATION } from "@/src/app/constants";
 
 const MobileMenu: React.FC = () => {
     const { visible } = useShowMenu(true);
