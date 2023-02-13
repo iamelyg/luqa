@@ -1,7 +1,11 @@
 import { Product } from "@/src/product/types";
 
 export type StoreContextType = {
-  cart: Product[];
+  state: {
+    cart: Product[];
+    addingToCart: boolean;
+    wasAdded: boolean;
+  }
   addToCart: (product: Product) => void;
   removeFromCart: (product: Product) => void;
 };

@@ -13,19 +13,10 @@ interface Props {
 }
 
 const ShopItem: React.FC<Props> = ({ product }) => {
-    const [addingToCart, setAddingToCart] = useState<boolean>(false);
-    const [wasAdded, setWasAdded] = useState<boolean>(false);
+    // const [addingToCart, setAddingToCart] = useState<boolean>(false);
+    // const [wasAdded, setWasAdded] = useState<boolean>(false);
 
-    const { addToCart } = useStoreContext();
-
-    const onAddToCart = (product: Product) => {
-        addToCart(product);
-        setAddingToCart(true);
-        setTimeout(() => {
-            setAddingToCart(false);
-            setWasAdded(true);
-        }, 500);
-    }
+    const { addToCart, state: { addingToCart, wasAdded } } = useStoreContext();
 
     return <Card maxW='sm' key={product.id}>
         <CardBody>
@@ -49,7 +40,7 @@ const ShopItem: React.FC<Props> = ({ product }) => {
         </CardBody>
         <CardFooter paddingTop={0} gap={1} flexDirection='column'>
             {/* <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}> */}
-            <Button isLoading={addingToCart} loadingText='Agregando' onClick={() => onAddToCart(product)}>
+            <Button isLoading={addingToCart} loadingText='Agregando' onClick={() => addToCart(product)}>
                 Agregar al carrito
             </Button>
             {wasAdded && <Badge colorScheme='green' fontSize='1rem'>&#10003; Agregado</Badge>}

@@ -9,7 +9,7 @@ import { Product } from '@/src/product/types';
 
 const Cart: React.FC = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { cart } = useStoreContext();
+    const { state: { cart } } = useStoreContext();
 
     const productList = useMemo(() => cart
         .reduce((message, product) => message.concat(`* ${product.title} - ${parseCurrency(product.price)}\n`), '')
