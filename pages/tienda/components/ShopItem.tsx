@@ -7,17 +7,16 @@ import QuickView from "./QuickView";
 import { Product } from '@/src/product/types';
 import { useStoreContext } from '../context/store.context.d';
 import { parseCurrency } from '@/src/utils/utilities';
+import AddToCartButton from './AddButton';
 
 interface Props {
     product: Product
 }
 
 const ShopItem: React.FC<Props> = ({ product }) => {
-    // const [addingToCart, setAddingToCart] = useState<boolean>(false);
-    // const [wasAdded, setWasAdded] = useState<boolean>(false);
+    const { state: { cart } } = useStoreContext();
 
-    const { addToCart, state: { addingToCart, wasAdded } } = useStoreContext();
-
+    console.log('cart', product, cart, cart.includes(product))
     return <Card maxW='sm' key={product.id}>
         <CardBody>
             <Center position='relative'>
@@ -38,12 +37,10 @@ const ShopItem: React.FC<Props> = ({ product }) => {
                 </Box>
             </Stack>
         </CardBody>
+
         <CardFooter paddingTop={0} gap={1} flexDirection='column'>
-            {/* <Button variant='outline' colorScheme='brand' onClick={() => setCart(state => state.concat(product))}> */}
-            <Button isLoading={addingToCart} loadingText='Agregando' onClick={() => addToCart(product)}>
-                Agregar al carrito
-            </Button>
-            {wasAdded && <Badge colorScheme='green' fontSize='1rem'>&#10003; Agregado</Badge>}
+            <AddToCartButton product={product} />
+            {Boolean(cart.includes(product)) && <Badge colorScheme='green' fontSize='1rem'>&#10003; Agregado</Badge>}
         </CardFooter>
     </Card>
 }

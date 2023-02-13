@@ -11,23 +11,16 @@ interface Props {
 
 const StoreProvider: React.FC<Props> = ({ children }) => {
     const [cart, setCart] = useState<Product[]>([]);
-    const [addingToCart, setAddingToCart] = useState<boolean>(false);
-    const [wasAdded, setWasAdded] = useState<boolean>(false);
 
     const addToCart = (product: Product) => {
         setCart(state => state.concat(product))
-        setAddingToCart(true);
-        setTimeout(() => {
-            setAddingToCart(false);
-            setWasAdded(true);
-        }, 500);
     }
 
     const removeFromCart = (product: Product) => {
 
     }
 
-    const state = { cart, addingToCart, wasAdded }
+    const state = { cart }
     
     return <TodoContext.Provider value={{
         state,
