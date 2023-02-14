@@ -39,10 +39,18 @@ const Cart: React.FC = () => {
 					<DrawerBody>
 						{cart.map(prod => <ProductInCart key={prod.id} {...prod} />)}
 					</DrawerBody>
-					<DrawerFooter gap={5} flexDirection='column'>
-						<HStack justifyContent='space-between'>
+					<DrawerFooter gap={5} flexDirection='column' bg='brand.700' color='whiteAlpha.800'>
+						<Flex justifyContent='space-between' w='full'>
+							<Text>Subtotal</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, item) => total + item.regularPrice, 0))}</Text>
+						</Flex>
+						<Flex justifyContent='space-between' w='full'>
+							<Text>Descuento</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, item) => total + (item.price - item.regularPrice), 0))}</Text>
+						</Flex>
+						<HStack justifyContent='space-between' color='green.500' w='full'>
 							<Text>Total</Text>
-							<Text color='green.500' fontWeight='bold'>{parseCurrency(cart.reduce((total, item) => total + item.price, 0))}</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, item) => total + item.price, 0))}</Text>
 						</HStack>
 						<Box>
 							<Button variant='outline' mr={3} onClick={onClose}>
@@ -68,8 +76,8 @@ const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, b
 		<VStack flex={1} alignItems='flex-start'>
 			<HStack alignItems='flex-start' justifyContent='space-between' w='100%'>
 				<Box>
-					<Text as='sub' textTransform='uppercase' color='gray.500'>{brand || 'luqa'}</Text>
-					<Heading size='xs' as='h6' fontWeight='semibold' color='gray.600'>{title}</Heading>
+					<Text as='sub' textTransform='uppercase' color='darkAlpha.500'>{brand || 'luqa'}</Text>
+					<Heading size='xs' as='h6' fontWeight='semibold' color='darkAlpha.600'>{title}</Heading>
 				</Box>
 				<IconButton aria-label='Eliminar del carrito' variant='ghost' icon={<Icon as={MdDeleteOutline} w={6} h={6} />} />
 			</HStack>
