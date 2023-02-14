@@ -65,23 +65,23 @@ const Cart: React.FC = () => {
 const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, brand }) => {
 	return <HStack gap={4} justifyContent='space-between' alignItems='center' mb={5}>
 		<Image src={image} w={20} borderRadius='1rem' />
-		<VStack flex={1}>
-			<HStack justifyContent='space-between' wrap={{ base: 'wrap', sm: 'nowrap' }} alignItems='start' w='100%' gap={2}>
+		<VStack flex={1} alignItems='flex-start'>
+			<HStack alignItems='flex-start' justifyContent='space-between' w='100%'>
 				<Box>
 					<Text as='sub' textTransform='uppercase' color='gray.500'>{brand || 'luqa'}</Text>
-					<Heading size='xs' as='h6'>{title}</Heading>
-					<HStack>
-						<Text as='del' color='gray.500'>{parseCurrency(regularPrice)}</Text>
-						<Text color='green.600' fontWeight='bold'>{parseCurrency(price)}</Text>
-					</HStack>
+					<Heading size='xs' as='h6' fontWeight='semibold' color='gray.600'>{title}</Heading>
 				</Box>
+				<IconButton aria-label='Eliminar del carrito' variant='ghost' icon={<Icon as={MdDeleteOutline} w={6} h={6} />} />
+			</HStack>
+			<HStack justifyContent='space-between' w='100%' mt={4}>
+				<Select placeholder='Cantidad' w='5rem'>
+					<option value='1'>1</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+				</Select>
 				<Box>
-					<Select placeholder='Cantidad' w='5rem'>
-						<option value='1'>1</option>
-						<option value='2'>2</option>
-						<option value='3'>3</option>
-					</Select>
-					<IconButton aria-label='Eliminar del carrito' variant='ghost' icon={<Icon as={MdDeleteOutline} w={6} h={6} />} />
+					<Text as='del' color='gray.500'>{parseCurrency(regularPrice)}</Text>
+					<Text color='green.600' fontWeight='bold'>{parseCurrency(price)}</Text>
 				</Box>
 			</HStack>
 		</VStack>
