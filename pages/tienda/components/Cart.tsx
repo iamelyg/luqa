@@ -70,7 +70,9 @@ const Cart: React.FC = () => {
 	)
 }
 
-const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, brand }) => {
+const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, brand, id }) => {
+	const { removeFromCart } = useStoreContext();
+
 	return <HStack gap={4} justifyContent='space-between' alignItems='center' mb={5}>
 		<Image src={image} w={20} borderRadius='1rem' />
 		<VStack flex={1} alignItems='flex-start'>
@@ -79,7 +81,7 @@ const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, b
 					<Text as='sub' textTransform='uppercase' color='darkAlpha.500'>{brand || 'luqa'}</Text>
 					<Heading size='xs' as='h6' fontWeight='semibold' color='darkAlpha.600'>{title}</Heading>
 				</Box>
-				<IconButton aria-label='Eliminar del carrito' variant='ghost' icon={<Icon as={MdDeleteOutline} w={6} h={6} />} />
+				<IconButton onClick={() => removeFromCart(id)} aria-label='Eliminar del carrito' variant='ghost' icon={<Icon as={MdDeleteOutline} w={6} h={6} />} />
 			</HStack>
 			<HStack justifyContent='space-between' w='100%' mt={4}>
 				<Select placeholder='Cantidad' w='5rem'>

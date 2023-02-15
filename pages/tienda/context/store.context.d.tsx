@@ -16,8 +16,8 @@ const StoreProvider: React.FC<Props> = ({ children }) => {
         setCart(state => state.concat(product))
     }
 
-    const removeFromCart = (product: Product) => {
-
+    const removeFromCart = (id: string) => {
+        console.log('eliminar', id)
     }
 
     const state = { cart }
