@@ -1,5 +1,6 @@
 import { useDisclosure, Button, Icon, Center, Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
 import { BsEye } from "react-icons/bs";
+import parse from 'html-react-parser';
 
 import { Product } from '@/src/product/types';
 import { parseCurrency } from '@/src/utils/utilities';
@@ -27,7 +28,7 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 							</Center>
 							<VStack alignItems='initial'>
 								<ModalHeader>{selectedProduct.title}</ModalHeader>
-								<Text>{selectedProduct.description}</Text>
+								<Text>{parse(selectedProduct.description)}</Text>
 								<HStack justifyContent='space-between' color='green'>
 									<Text fontWeight='bold'>Online</Text>
 									<Text fontWeight='bold' >{parseCurrency(selectedProduct.price)}</Text>
