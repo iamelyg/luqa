@@ -16,7 +16,7 @@ interface Props {
 const ShopItem: React.FC<Props> = ({ product }) => {
     const { state: { cart } } = useStoreContext();
 
-    console.log('cart', product, cart, cart.includes(product))
+    // console.log('cart', product, cart, cart.includes(product))
     return <Card maxW='sm' key={product.id}>
         <CardBody>
             <Center position='relative'>

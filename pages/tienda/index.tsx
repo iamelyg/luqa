@@ -2,9 +2,12 @@ import { useMemo, useState } from 'react';
 import { GetStaticProps } from 'next';
 import { Button, Grid, Link, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from '@chakra-ui/react';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
+import { google } from 'googleapis';
+import { GoogleAuth } from 'google-auth-library';
 
 import ShopItem from './components/ShopItem';
 
+import { getProductList } from '@/api/product';
 import api from '@/src/product/api';
 import { Product } from '@/src/product/types';
 import { useStoreContext } from './context/store.context.d';
@@ -61,12 +64,14 @@ const Market: React.FC<Props> = ({ products }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const products = await api.list();
 
+  await getProductList();
+
   return {
     props: {
       products,
     },
     // cada cuánto tiempo iene que ir la petición al servidor a actualizar la infos
-    revalidate: 10
+    revalidate: 5
   };
 }
 
