@@ -13,10 +13,12 @@ export async function getProductList() {
             range,
         });
 
-        console.log('RESPOSNE', response.data)
+        // console.log('RESPOSNE', response.data.values)
 
-        const [title, content] = response.data.values[0];
-        console.log(title, content)
+        // const [title, content] = response.data.values[0];
+        // console.log(title, content)
+
+        console.log('sheetsToJson', sheetsToJson(response.data.values))
 
         return {
             props: {
@@ -32,3 +34,5 @@ export async function getProductList() {
         }
     }
 }
+
+const sheetsToJson = ([keys, ...values]) => values.map(vs => vs.reduce((acc, v, i) => (acc[keys[i]] = v, acc), {}))
