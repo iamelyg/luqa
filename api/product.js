@@ -13,24 +13,19 @@ export async function getProductList() {
             range,
         });
 
-        // console.log('RESPOSNE', response.data.values)
-
-        // const [title, content] = response.data.values[0];
-        // console.log(title, content)
-
-        console.log('sheetsToJson', sheetsToJson(response.data.values))
-
+        const data = sheetsToJson(response.data.values).map(product => ({
+            ...product,
+            price: Number(product.price),
+            regularPrice: Number(product.regularPrice)
+        }));
+        console.log('sheetsToJson', data)
         return {
-            props: {
-                title,
-                content
-            }
+            success: true,
+            data,
         }
     } catch (e) {
         return {
-            props: {
-                error: true, message: 'No se puede acceder a esta info.'
-            }
+            success: false, message: 'No se puede acceder a esta info.'
         }
     }
 }
