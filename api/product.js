@@ -30,4 +30,5 @@ export async function getProductList() {
     }
 }
 
-const sheetsToJson = ([keys, ...values]) => values.map(vs => vs.reduce((acc, v, i) => (acc[keys[i]] = v, acc), {}))
+// const sheetsToJson = ([keys, ...values]) => values.map(vs => vs.reduce((acc, v, i) => (acc[keys[i]] = v, acc), {}))
+const sheetsToJson = ([keys, ...values]) => values.map(vs => Object.fromEntries(vs.map((v, i) => [keys[i], v.includes('|') ? v.split('|') : v])))
