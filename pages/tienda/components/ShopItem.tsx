@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { Button, Grid, Badge, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from '@chakra-ui/react';
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
+import { Badge, Stack, Text, Image, Card, Center, CardBody, CardFooter, Heading, Box } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
 import QuickView from "./QuickView";
 
@@ -16,14 +15,13 @@ interface Props {
 const ShopItem: React.FC<Props> = ({ product }) => {
     const { state: { cart } } = useStoreContext();
 
-    // console.log('cart', product, cart, cart.includes(product))
     return <Card maxW='sm'>
         <CardBody>
             <Center position='relative'>
                 <Image
                     //   onClick={() => setSelectedImage(product.image)}
                     as={motion.img} cursor='pointer' layoutId={product.image}
-                    alt={product.title} src={product.image} objectFit='cover' borderTopRadius={10} />
+                    alt={product.title} src={Array.isArray(product.image) ? product.image[0] : product.image} objectFit='cover' borderTopRadius={10} />
                 <QuickView selectedProduct={product} />
             </Center>
             <Stack mt='6' spacing={4}>
