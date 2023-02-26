@@ -9,6 +9,8 @@ import theme from '@/theme';
 import { StoreProvider } from './tienda/context/store.context.d';
 import { useRouter } from 'next/router';
 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const { pathname } = useRouter();
 

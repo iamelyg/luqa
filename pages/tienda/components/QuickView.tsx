@@ -1,6 +1,7 @@
 import { useDisclosure, Button, Icon, Center, Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
 import { BsEye } from "react-icons/bs";
 import parse from 'html-react-parser';
+import { Carousel } from 'react-responsive-carousel';
 
 import { Product } from '@/src/product/types';
 import { parseCurrency } from '@/src/utils/utilities';
@@ -23,8 +24,15 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 					<ModalBody >
 						<Grid gridGap={6} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}>
 							<Center alignItems='center'>
-								<Image
-									alt={selectedProduct.title} src={selectedProduct.image} objectFit='cover' borderRadius={10} />
+								<Carousel showStatus={false} showThumbs={true} infiniteLoop={true}>
+									{/* {selectedProduct.image.map(url => <Image
+										alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} />
+									)} */}
+									<Image
+										alt={selectedProduct.title} src={selectedProduct.image} objectFit='cover' borderRadius={10} />
+									<Image
+										alt={selectedProduct.title} src={selectedProduct.image} objectFit='cover' borderRadius={10} />
+								</Carousel>
 							</Center>
 							<VStack alignItems='initial'>
 								<ModalHeader>{selectedProduct.title}</ModalHeader>
