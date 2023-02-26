@@ -31,7 +31,7 @@ const Market: React.FC<Props> = ({ products }) => {
   return <AnimateSharedLayout type='crossfade'>
     <Stack spacing={6}>
       <Grid gridGap={6} templateColumns='repeat(auto-fill, minmax(240px, 1fr))'>
-        {products.map(product => <ShopItem product={product} />)}
+        {products.map(product => <ShopItem product={product} key={product.id} />)}
       </Grid>
       {Boolean(cart.length) && <AnimatePresence>
         <Flex as={motion.div} animate={{ scale: 1 }} initial={{ scale: 0 }} exit={{ scale: 0 }}
