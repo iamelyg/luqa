@@ -8,7 +8,7 @@ export async function getProductList() {
 
 		const sheets = google.sheets({ version: 'v4', auth });
 
-		const range = `stock!A1:I5`;
+		const range = `stock`;
 
 		const response = await sheets.spreadsheets.values.get({
 			spreadsheetId: process.env.SHEET_ID,
@@ -20,14 +20,11 @@ export async function getProductList() {
 			price: Number(product.price),
 			regularPrice: Number(product.regularPrice)
 		}));
-		console.log('sheetsToJson', data)
-		return {
-			success: true,
-			data,
-		}
+		// console.log('sheetsToJson', data)
+		return data
 	} catch (e) {
 		return {
-			success: false, message: 'No se puede acceder a esta info.'
+			error: true, message: 'No se puede acceder a esta info.'
 		}
 	}
 }

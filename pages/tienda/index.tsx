@@ -62,14 +62,14 @@ const Market: React.FC<Props> = ({ products }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const products = await api.list();
+  // const products = await api.list();
 
-  await getProductList();
+  const products= await getProductList();
 
   return {
     props: {
       products,
-    },
+    },  
     // cada cuánto tiempo iene que ir la petición al servidor a actualizar la infos
     revalidate: 5
   };
