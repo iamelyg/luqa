@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 import QuickView from "./QuickView";
 
 import { Product } from '@/src/product/types';
+import { useStoreContext } from '../context/store.context.d';
 import { parseCurrency } from '@/src/utils/utilities';
 import AddToCartButton from './AddButton';
-import { useStoreContext } from '@/src/components/tienda/context/store.context.d';
 
 interface Props {
     product: Product

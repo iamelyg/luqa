@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { motion } from "framer-motion"
 
+import Cart from "../tienda/components/Cart";
 import useShowMenu from "./useShowMenu";
-import Cart from "@/pages/tienda/components/Cart";
 
 import { INFORMATION } from "@/src/app/constants";
 

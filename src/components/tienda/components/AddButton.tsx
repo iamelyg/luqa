@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Button } from '@chakra-ui/react';
+import { Button, Grid, Badge, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from '@chakra-ui/react';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 import { Product } from '@/src/product/types';
-import { useStoreContext } from '@/src/components/tienda/context/store.context.d';
+import { useStoreContext } from '../context/store.context.d';
 
 interface Props {
     product: Product

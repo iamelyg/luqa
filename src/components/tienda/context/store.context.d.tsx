@@ -29,15 +29,15 @@ const StoreProvider: React.FC<Props> = ({ children }) => {
 };
 
 const useStoreContext = () => {
-    const currentUserContext = useContext(TodoContext) as StoreContextType;
+    const storeContext = useContext(TodoContext) as StoreContextType;
 
-    if (!currentUserContext) {
+    if (!storeContext) {
         throw new Error(
-            "useCurrentUser has to be used within <CurrentUserContext.Provider>"
+            "useCurrentUser has to be used within <useStoreContext.Provider>"
         );
     }
 
-    return currentUserContext;
+    return storeContext;
 };
 
 export { StoreProvider, useStoreContext }

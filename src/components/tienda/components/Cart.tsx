@@ -3,8 +3,7 @@ import { Box, HStack, Drawer, IconButton, Select, Heading, DrawerBody, DrawerFoo
 import { MdOutlineShoppingCart, MdDeleteOutline } from 'react-icons/md';
 import Link from 'next/link';
 
-import { useStoreContext } from '@/src/components/tienda/context/store.context.d';
-
+import { useStoreContext } from '../context/store.context.d';
 import { parseCurrency } from '@/src/utils/utilities';
 import { Product } from '@/src/product/types';
 

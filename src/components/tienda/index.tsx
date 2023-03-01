@@ -1,16 +1,10 @@
 import { useMemo, useState } from 'react';
-import { GetStaticProps } from 'next';
 import { Button, Grid, Link, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from '@chakra-ui/react';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-import { google } from 'googleapis';
-import { GoogleAuth } from 'google-auth-library';
 
 import ShopItem from './components/ShopItem';
 
-import { getProductList } from '@/api/product';
-import api from '@/src/product/api';
 import { Product } from '@/src/product/types';
-import { useStoreContext } from '@/src/components/tienda/context/store.context.d';
 
 interface Props {
   products: Product[]
@@ -21,14 +15,13 @@ const parseCurrency = (value: number): String => value.toLocaleString('es-PE', {
 const Market: React.FC<Props> = ({ products }) => {
   const [cart, setCart] = useState<Product[]>([]);
   const [selectedImage, setSelectedImage] = useState<string>('');
-  const { addToCart } = useStoreContext();
 
   const text = useMemo(() => cart
     .reduce((message, product) => message.concat(`* ${product.title} - ${parseCurrency(product.price)}\n`), '')
     .concat(`\nTotal: ${parseCurrency(cart.reduce((total, product) => total + product.price, 0))}`)
     , [cart])
 
-  return <AnimateSharedLayout >
+  return <AnimateSharedLayout>
     <Stack spacing={6}>
       <Grid gridGap={6} templateColumns='repeat(auto-fill, minmax(240px, 1fr))'>
         {products.map(product => <ShopItem product={product} key={product.id} />)}
@@ -59,20 +52,6 @@ const Market: React.FC<Props> = ({ products }) => {
       </Flex>}
     </AnimatePresence>
   </AnimateSharedLayout>;
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  // const products = await api.list();
-
-  const products= await getProductList();
-
-  return {
-    props: {
-      products,
-    },  
-    // cada cuánto tiempo iene que ir la petición al servidor a actualizar la infos
-    revalidate: 5
-  };
 }
 
 export default Market;

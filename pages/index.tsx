@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import { Grid, useMediaQuery } from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
 import { Carousel } from 'react-responsive-carousel';
+import { GetStaticProps } from 'next';
 
 import fongex2proM from '../src/images/home/auricular-hifi-fonge-x2pro-m.png';
 import fongex2pro from '../src/images/home/auricular-hi-fi-fonge-x2-pro.png';
@@ -9,21 +10,37 @@ import soundpeats from '../src/images/home/audifonos-soundpeats.png';
 import air3proM from '../src/images/home/audifono-air3-pro-m.png';
 import air3pro from '../src/images/home/audifono-air3-pro.png';
 
-const IndexRoute: React.FC = () => {
+import Market from '@/src/components/tienda';
+
+import { getProductList } from '@/api/product';
+import { Product } from '@/src/product/types';
+
+interface Props {
+  products: Product[]
+}
+
+const IndexRoute: React.FC<Props> = ({ products }) => {
   return <>
-    {/* <Image style={{ borderRadius: '1.5rem' }}
-      src={isLargerThan800 ? fongex2proD : fongex2pro}
-      alt="auricular hifi Fonge x2 pro "
-    // width={500} automatically provided
-    // height={500} automatically provided
-    // blurDataURL="data:..." automatically provided
-    // placeholder="blur" // Optional blur-up while loading
-    /> */}
     <MainCarousel />
+    <Market products={products} />
   </>;
 }
 
 export default IndexRoute;
+
+
+export const getStaticProps: GetStaticProps = async () => {
+
+  const products = await getProductList();
+
+  return {
+    props: {
+      products,
+    },
+    // cada cuánto tiempo iene que ir la petición al servidor a actualizar la infos
+    revalidate: 5
+  };
+}
 
 const MainCarousel = () => {
   const [isLargerThan800] = useMediaQuery('(min-width: 600px)', { ssr: true, fallback: false });

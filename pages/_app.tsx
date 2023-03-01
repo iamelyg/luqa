@@ -6,10 +6,11 @@ import MobileDrawer from '@/src/components/navbar/Mobile';
 import Footer from '@/src/components/footer/Footer';
 
 import theme from '@/theme';
-import { StoreProvider } from './tienda/context/store.context.d';
+// import { StoreProvider } from './tienda/context/store.context.d';
 import { useRouter } from 'next/router';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { StoreProvider } from '@/src/components/tienda/context/store.context.d';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const { pathname } = useRouter();

@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { BsMoonStars, BsSun } from 'react-icons/bs';
 import { motion } from "framer-motion"
 
-import Cart from '@/pages/tienda/components/Cart';
+import Cart from "../tienda/components/Cart";
 import useShowMenu from "./useShowMenu";
 
-import { INFORMATION } from '@/src/app/constants';
 
 import Logo from '../../../public/logo-luqa-pe.png';
+import { INFORMATION } from "@/src/app/constants";
 
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();
