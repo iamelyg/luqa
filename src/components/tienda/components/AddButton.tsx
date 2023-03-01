@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Grid, Badge, Stack, Text, Image, Flex, Card, Center, CardBody, CardFooter, Heading, Divider, ButtonGroup, Box } from '@chakra-ui/react';
+import { Button, useToast } from '@chakra-ui/react';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 import { Product } from '@/src/product/types';
@@ -10,16 +10,26 @@ interface Props {
 }
 
 const AddToCartButton: React.FC<Props> = ({ product }) => {
+    const toast = useToast();
+
     const [addingToCart, setAddingToCart] = useState<boolean>(false);
 
     const { addToCart } = useStoreContext();
 
-    const onClick = ( ) => {
+    const onClick = () => {
         addToCart(product)
         setAddingToCart(true);
         setTimeout(() => {
             setAddingToCart(false);
         }, 500);
+
+        toast({
+            title: 'Auricular agregado a tu carrito.',
+            description: product.title,
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+        })
     }
 
     return <Button isLoading={addingToCart} loadingText='Agregando' onClick={onClick}>

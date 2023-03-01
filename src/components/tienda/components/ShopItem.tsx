@@ -38,7 +38,7 @@ const ShopItem: React.FC<Props> = ({ product }) => {
 
         <CardFooter paddingTop={0} gap={1} flexDirection='column'>
             <AddToCartButton product={product} />
-            {Boolean(cart.includes(product)) && <Badge colorScheme='green' fontSize='1rem'>&#10003; Agregado</Badge>}
+            {/* {Boolean(cart.includes(product)) && <Badge colorScheme='green' fontSize='1rem'>&#10003; Agregado</Badge>} */}
         </CardFooter>
     </Card>
 }
