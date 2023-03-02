@@ -27,8 +27,8 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 							<Center alignItems='center'>
 								{Array.isArray(selectedProduct.images)
 									&& <Carousel showStatus={false} showThumbs={true} infiniteLoop={true}>
-										{selectedProduct.images.map((url => <li><Image
-											alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} /> </li>
+										{selectedProduct.images.map(((url, id) => <Image
+											alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} key={id}/> 
 										))}
 									</Carousel>}
 							</Center>
