@@ -7,4 +7,6 @@ export interface Product {
     price: number;
     regularPrice: number;
     brand: string;
+    images: Array<string>;
+
 }

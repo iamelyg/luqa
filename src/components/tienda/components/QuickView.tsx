@@ -6,6 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { Product } from '@/src/product/types';
 import { parseCurrency } from '@/src/utils/utilities';
 import AddToCartButton from './AddButton';
+import { Fragment } from 'react';
 
 interface Props {
 	selectedProduct: Product
@@ -24,15 +25,12 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 					<ModalBody >
 						<Grid gridGap={6} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}>
 							<Center alignItems='center'>
-								<Carousel showStatus={false} showThumbs={true} infiniteLoop={true}>
-									{/* {selectedProduct.image.map(url => <Image
-										alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} />
-									)} */}
-									<Image
-										alt={selectedProduct.title} src={selectedProduct.image} objectFit='cover' borderRadius={10} />
-									<Image
-										alt={selectedProduct.title} src={selectedProduct.image} objectFit='cover' borderRadius={10} />
-								</Carousel>
+								{Array.isArray(selectedProduct.images)
+									&& <Carousel showStatus={false} showThumbs={true} infiniteLoop={true}>
+										{selectedProduct.images.map((url => <li><Image
+											alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} /> </li>
+										))}
+									</Carousel>}
 							</Center>
 							<VStack alignItems='initial'>
 								<ModalHeader>{selectedProduct.title}</ModalHeader>

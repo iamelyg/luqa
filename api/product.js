@@ -18,7 +18,8 @@ export async function getProductList() {
 		const data = sheetsToJson(response.data.values).map(product => ({
 			...product,
 			price: Number(product.price),
-			regularPrice: Number(product.regularPrice)
+			regularPrice: Number(product.regularPrice),
+			images: product.image
 		}));
 		// console.log('sheetsToJson', data)
 		return data
