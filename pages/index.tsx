@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const MainCarousel = () => {
   const [isLargerThan800] = useMediaQuery('(min-width: 600px)', { ssr: true, fallback: false });
 
-  return <Carousel autoPlay={true} showArrows={false} showStatus={false} interval={3000} infiniteLoop>
+  return <Carousel autoPlay={true} showArrows={false} showStatus={false} interval={3000} infiniteLoop showThumbs={false}>
     <Image style={{ borderRadius: '1.5rem', aspectRatio: isLargerThan800 ? '16/9' : '9/16' }}
       src={isLargerThan800 ? fongex2pro : fongex2proM}
       alt="auricular hifi Fonge x2 pro "

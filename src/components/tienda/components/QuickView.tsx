@@ -1,4 +1,4 @@
-import { useDisclosure, Button, Icon, Center, Text, Grid, VStack, Modal, ModalOverlay, Image, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
+import { useDisclosure, Button, Icon, Center, Text, Grid, VStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
 import { BsEye } from "react-icons/bs";
 import parse from 'html-react-parser';
 import { Carousel } from 'react-responsive-carousel';
@@ -6,7 +6,6 @@ import { Carousel } from 'react-responsive-carousel';
 import { Product } from '@/src/product/types';
 import { parseCurrency } from '@/src/utils/utilities';
 import AddToCartButton from './AddButton';
-import { Fragment } from 'react';
 
 interface Props {
 	selectedProduct: Product
@@ -27,9 +26,12 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 							<Center alignItems='center'>
 								{Array.isArray(selectedProduct.images)
 									&& <Carousel showStatus={false} showThumbs={true} infiniteLoop={true}>
-										{selectedProduct.images.map(((url, id) => <Image
-											alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} key={id}/> 
+										{selectedProduct.images.map(((url, id) => <img
+											alt={selectedProduct.title} src={url} key={id}/> 
 										))}
+										{/* {selectedProduct.images.map(((url, id) => <Image
+											alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} key={id}/> 
+										))} */}
 									</Carousel>}
 							</Center>
 							<VStack alignItems='initial'>
