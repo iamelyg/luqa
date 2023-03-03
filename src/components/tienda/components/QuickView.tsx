@@ -1,7 +1,8 @@
-import { useDisclosure, Button, Icon, Center, Text, Grid, VStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
+import { useDisclosure, Button, Icon, Center, Text, Grid, Image, VStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, HStack } from '@chakra-ui/react';
 import { BsEye } from "react-icons/bs";
 import parse from 'html-react-parser';
 import { Carousel } from 'react-responsive-carousel';
+// import Image from 'next/image';
 
 import { Product } from '@/src/product/types';
 import { parseCurrency } from '@/src/utils/utilities';
@@ -23,17 +24,15 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 					<ModalCloseButton />
 					<ModalBody >
 						<Grid gridGap={6} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}>
-							<Center alignItems='center'>
-								{Array.isArray(selectedProduct.images)
-									&& <Carousel showStatus={false} showThumbs={true} infiniteLoop={true}>
-										{selectedProduct.images.map(((url, id) => <img
-											alt={selectedProduct.title} src={url} key={id}/> 
-										))}
-										{/* {selectedProduct.images.map(((url, id) => <Image
-											alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} key={id}/> 
-										))} */}
-									</Carousel>}
-							</Center>
+							{Array.isArray(selectedProduct.images)
+								&& <Carousel showStatus={false} showThumbs={true} infiniteLoop={true}>
+									{selectedProduct.images.map(((url, id) => <img
+										alt={selectedProduct.title} src={url} key={id} />
+									))}
+									{/* {selectedProduct.images.map(((url, id) => <Image
+										alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} key={id} />
+									))} */}
+								</Carousel>}
 							<VStack alignItems='initial'>
 								<ModalHeader>{selectedProduct.title}</ModalHeader>
 								{parse(selectedProduct.description)}
@@ -45,13 +44,13 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 									<Text>Regular</Text>
 									<Text as='del'>{parseCurrency(selectedProduct.regularPrice)}</Text>
 								</HStack>
-								<ModalFooter>
-									<AddToCartButton product={selectedProduct} />
-									<Button variant='ghost'>Comprar ahora</Button>
-								</ModalFooter>
 							</VStack>
 						</Grid>
 					</ModalBody>
+					<ModalFooter>
+						<AddToCartButton product={selectedProduct} />
+						<Button variant='ghost'>Comprar ahora</Button>
+					</ModalFooter>
 				</ModalContent>
 			</Modal>
 		</>
