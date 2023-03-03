@@ -36,7 +36,7 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 							</Center>
 							<VStack alignItems='initial'>
 								<ModalHeader>{selectedProduct.title}</ModalHeader>
-								<Text>{parse(selectedProduct.description)}</Text>
+								{parse(selectedProduct.description)}
 								<HStack justifyContent='space-between' color='green'>
 									<Text fontWeight='bold'>Online</Text>
 									<Text fontWeight='bold' >{parseCurrency(selectedProduct.price)}</Text>
