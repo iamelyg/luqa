@@ -74,7 +74,7 @@ const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, b
 	const { removeFromCart } = useStoreContext();
 
 	return <HStack gap={4} justifyContent='space-between' alignItems='center' mb={5}>
-		<Image src={image[0]} w={20} borderRadius='1rem' />
+		<Image src={image[0]} w={20} borderRadius='1rem' alt={title} />
 		<VStack flex={1} alignItems='flex-start'>
 			<HStack alignItems='flex-start' justifyContent='space-between' w='100%'>
 				<Box>

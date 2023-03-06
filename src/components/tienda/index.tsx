@@ -48,7 +48,7 @@ const Market: React.FC<Props> = ({ products }) => {
         zIndex={2}
         position='fixed'
         alignItems='center'>
-        <Image key='image' src={selectedImage} />
+        <Image key='image' src={selectedImage} alt={selectedImage}/>
       </Flex>}
     </AnimatePresence>
   </AnimateSharedLayout>;

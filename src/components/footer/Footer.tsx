@@ -1,11 +1,10 @@
 import React from "react";
 import { SimpleGrid, Link, Button, HStack, chakra, Icon, Text, VStack, ListItem, IconButton, UnorderedList, Stack, Container, Input, Box } from '@chakra-ui/react';
-import Logo from '../../../public/logo-luqa-pe.png';
 import NextLink from 'next/link';
 import { FaPaperPlane } from 'react-icons/fa';
 
 
-import { INFORMATION } from '@/src/app/constants';
+import { INFORMATION } from '@/src/utils/constants';
 
 const Footer: React.FC = () => {
     return (

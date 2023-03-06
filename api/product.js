@@ -4,7 +4,15 @@ import { sheetsToJson } from '@/src/utils/utilities';
 
 export async function getProductList() {
 	try {
-		const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] });
+		const auth = await google.auth.getClient({
+			credentials: {
+				client_id: process.env.GOOGLE_CLIENT_ID,
+				client_email: process.env.GOOGLE_CLIENT_EMAIL,
+				project_id: process.env.GOOGLE_PROJECT_ID,
+				private_key: JSON.parse(process.env.GOOGLE_PRIVATE_KEY)
+			}, 
+			scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
+		});
 
 		const sheets = google.sheets({ version: 'v4', auth });
 

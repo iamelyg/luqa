@@ -16,7 +16,7 @@ const ShopItem: React.FC<Props> = ({ product }) => {
     const { state: { cart } } = useStoreContext();
 
     return <Card maxW='sm'>
-        <CardBody>+
+        <CardBody>
             
             <Center position='relative'>
                 <Image

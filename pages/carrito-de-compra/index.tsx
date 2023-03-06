@@ -1,6 +1,6 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Input, Card, Text, VStack, Box } from '@chakra-ui/react';
 
-import { INFORMATION } from '@/src/app/constants';
+import { INFORMATION } from '@/src/utils/constants';
 
 const ShoppingCart: React.FC = () => {
     return <Tabs bg='white' w='container.md' m='auto' shadow='lg' p={6}>

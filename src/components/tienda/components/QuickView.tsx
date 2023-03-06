@@ -26,8 +26,10 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 						<Grid gridGap={6} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}>
 							{Array.isArray(selectedProduct.images)
 								&& <Carousel showStatus={false} showThumbs={isLargerThan800} infiniteLoop={true} thumbWidth={50}>
-									{selectedProduct.images.map(((url, id) => <img
-										alt={selectedProduct.title} src={url} key={id} style={{ maxWidth: '300px'}} />
+									{selectedProduct.images.map(((url, id) => <picture key={id}>
+										<img
+											alt={selectedProduct.title} src={url}  style={{ maxWidth: '300px' }} />
+									</picture>
 									))}
 									{/* {selectedProduct.images.map(((url, id) => <Image
 										alt={selectedProduct.title} src={url} objectFit='cover' borderRadius={10} key={id} />
@@ -52,9 +54,9 @@ const QuickView: React.FC<Props> = ({ selectedProduct }) => {
 						</Grid>
 					</ModalBody>
 					{!isLargerThan800 && <ModalFooter>
-									<AddToCartButton product={selectedProduct} />
-									<Button variant='ghost'>Comprar ahora</Button>
-								</ModalFooter>}
+						<AddToCartButton product={selectedProduct} />
+						<Button variant='ghost'>Comprar ahora</Button>
+					</ModalFooter>}
 				</ModalContent>
 			</Modal>
 		</>

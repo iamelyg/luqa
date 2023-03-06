@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import Cart from "../tienda/components/cart/Cart";
 import useShowMenu from "./useShowMenu";
 
-import { INFORMATION } from "@/src/app/constants";
+import { INFORMATION } from "@/src/utils/constants";
 
 const MobileMenu: React.FC = () => {
     const { visible } = useShowMenu(true);

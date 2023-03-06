@@ -8,8 +8,8 @@ import Cart from "../tienda/components/cart/Cart";
 import useShowMenu from "./useShowMenu";
 
 
-import Logo from '../../../public/logo-luqa-pe.png';
-import { INFORMATION } from "@/src/app/constants";
+import Logo from '../../images/brand/logo-luqa-pe.png';
+import { INFORMATION } from "@/src/utils/constants";
 
 const DesktopNavbar: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();
@@ -23,7 +23,7 @@ const DesktopNavbar: React.FC = () => {
             <Flex w="100%" px="6" py="5" justify="space-between">
                 <HStack gap={6}>
                     <Link href='/'>
-                        <Image src={Logo.src} h={50} w={150} />
+                        <Image src={Logo.src} h={50} w={150} alt='Luqa pe'/>
                     </Link>
                     <HStack as="nav" spacing="5">
                         {INFORMATION.menu.map((item, i) => (
