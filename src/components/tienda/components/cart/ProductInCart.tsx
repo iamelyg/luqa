@@ -30,11 +30,6 @@ const ProductInCart: React.FC<Props> = ({ product: { item, quantity } }) => {
                 {/* <RemoveFromCartButton  /> */}
             </HStack>
             <HStack justifyContent='space-between' w='100%' mt={4}>
-                <Select placeholder='Cantidad' w='5rem'>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                </Select>
                 <Quantity id={id} quantity={quantity} />
                 <Box>
                     <Text as='del' color='gray.500'>{parseCurrency(regularPrice)}</Text>

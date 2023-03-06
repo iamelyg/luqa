@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { Button, HStack, Text, useToast } from '@chakra-ui/react';
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
+import { HStack, Text, IconButton, Icon } from '@chakra-ui/react';
 import { useStoreContext } from '../../context/store.context.d';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 interface Props {
     id: string,
@@ -9,15 +8,12 @@ interface Props {
 }
 
 const Quantity: React.FC<Props> = ({ id, quantity }) => {
-
     const { addProduct, removeProduct, removeFromCart } = useStoreContext();
 
     return <HStack>
-        <Button onClick={() => quantity === 1 ? removeFromCart(id) :removeProduct(id)}>
-            -
-        </Button>
+        <IconButton onClick={() => quantity === 1 ? removeFromCart(id) : removeProduct(id)} aria-label='Quitar un producto en carrito' size='xs' icon={<Icon as={AiOutlineMinus} />} />
         <Text>{quantity}</Text>
-        <Button onClick={() => addProduct(id)}>+</Button>
+        <IconButton onClick={() => addProduct(id)} aria-label='Agregar un producto en carrito' size='xs' icon={<Icon as={AiOutlinePlus} />} />
     </HStack>
 }
 
