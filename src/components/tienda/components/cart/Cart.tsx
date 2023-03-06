@@ -3,7 +3,7 @@ import { Box, HStack, Drawer, IconButton, Select, Heading, DrawerBody, DrawerFoo
 import { MdOutlineShoppingCart, MdDeleteOutline } from 'react-icons/md';
 import Link from 'next/link';
 
-import { useStoreContext } from '../context/store.context.d';
+import { useStoreContext } from '../../context/store.context.d';
 import { parseCurrency } from '@/src/utils/utilities';
 import { Product } from '@/src/product/types';
 
@@ -82,6 +82,7 @@ const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, b
 					<Heading size='xs' as='h6' fontWeight='semibold' color='darkAlpha.600'>{title}</Heading>
 				</Box>
 				<IconButton onClick={() => removeFromCart(id)} aria-label='Eliminar del carrito' variant='ghost' icon={<Icon as={MdDeleteOutline} w={6} h={6} />} />
+				{/* <RemoveFromCartButton  /> */}
 			</HStack>
 			<HStack justifyContent='space-between' w='100%' mt={4}>
 				<Select placeholder='Cantidad' w='5rem'>

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { motion } from "framer-motion"
 
-import Cart from "../tienda/components/Cart";
+import Cart from "../tienda/components/cart/Cart";
 import useShowMenu from "./useShowMenu";
 
 import { INFORMATION } from "@/src/app/constants";

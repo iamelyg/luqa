@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { BsMoonStars, BsSun } from 'react-icons/bs';
 import { motion } from "framer-motion"
 
-import Cart from "../tienda/components/Cart";
+import Cart from "../tienda/components/cart/Cart";
 import useShowMenu from "./useShowMenu";
 
 

@@ -18,6 +18,8 @@ const StoreProvider: React.FC<Props> = ({ children }) => {
 
     const removeFromCart = (id: string) => {
         console.log('eliminar', id)
+
+        setCart(state => state.filter(product => product.id !== id))
     }
 
     const state = { cart }
