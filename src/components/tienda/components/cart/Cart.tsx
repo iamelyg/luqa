@@ -1,12 +1,13 @@
 import { useMemo } from 'react';
-import { Box, HStack, Drawer, IconButton, Select, Heading, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex, Image, VStack } from '@chakra-ui/react';
-import { MdOutlineShoppingCart, MdDeleteOutline } from 'react-icons/md';
+import { Box, HStack, Drawer, IconButton, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Text, Icon, Flex } from '@chakra-ui/react';
+import { MdOutlineShoppingCart } from 'react-icons/md';
 import Link from 'next/link';
 
 import ProductInCart from './ProductInCart';
 
 import { useStoreContext } from '../../context/store.context.d';
 import { parseCurrency } from '@/src/utils/utilities';
+import EmptyCart from './EmptyCart';
 
 const Cart: React.FC = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -37,8 +38,10 @@ const Cart: React.FC = () => {
 				<DrawerContent>
 					<DrawerCloseButton />
 					<DrawerHeader>Tus productos</DrawerHeader>
-					<DrawerBody>
-						{cart.map(prod => <ProductInCart key={prod.item.id} product={prod} />)}
+					<DrawerBody display='flex' flexDirection='column'>
+						{Boolean(cart.length > 0) ?
+							cart.map(prod => <ProductInCart key={prod.item.id} product={prod} />) :
+							<EmptyCart/>}
 					</DrawerBody>
 					<DrawerFooter gap={5} flexDirection='column' bg='brand.700' color='whiteAlpha.800'>
 						<Flex justifyContent='space-between' w='full'>
