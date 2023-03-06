@@ -4,18 +4,19 @@ import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { useStoreContext } from '../../context/store.context.d';
 
 interface Props {
-    id: string
+    id: string,
+    quantity: number,
 }
 
-const Quantity: React.FC<Props> = ({ id }) => {
+const Quantity: React.FC<Props> = ({ id, quantity }) => {
 
-    const { addProduct, removeProduct} = useStoreContext();
+    const { addProduct, removeProduct } = useStoreContext();
 
     return <HStack>
         <Button onClick={() => removeProduct(id)}>
             -
         </Button>
-        <Text>4</Text>
+        <Text>{quantity}</Text>
         <Button onClick={() => addProduct(id)}>+</Button>
     </HStack>
 }

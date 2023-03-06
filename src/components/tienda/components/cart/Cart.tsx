@@ -3,10 +3,10 @@ import { Box, HStack, Drawer, IconButton, Select, Heading, DrawerBody, DrawerFoo
 import { MdOutlineShoppingCart, MdDeleteOutline } from 'react-icons/md';
 import Link from 'next/link';
 
+import ProductInCart from './ProductInCart';
+
 import { useStoreContext } from '../../context/store.context.d';
 import { parseCurrency } from '@/src/utils/utilities';
-import { Product } from '@/src/product/types';
-import Quantity from './Quantity';
 
 const Cart: React.FC = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,7 +38,7 @@ const Cart: React.FC = () => {
 					<DrawerCloseButton />
 					<DrawerHeader>Tus productos</DrawerHeader>
 					<DrawerBody>
-						{cart.map(prod => <ProductInCart key={prod.item.id} {...prod.item} />)}
+						{cart.map(prod => <ProductInCart key={prod.item.id} product={prod} />)}
 					</DrawerBody>
 					<DrawerFooter gap={5} flexDirection='column' bg='brand.700' color='whiteAlpha.800'>
 						<Flex justifyContent='space-between' w='full'>
@@ -69,36 +69,6 @@ const Cart: React.FC = () => {
 			</Drawer>
 		</>
 	)
-}
-
-const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, brand, id }) => {
-	const { removeFromCart } = useStoreContext();
-
-	return <HStack gap={4} justifyContent='space-between' alignItems='center' mb={5}>
-		<Image src={image[0]} w={20} borderRadius='1rem' alt={title} />
-		<VStack flex={1} alignItems='flex-start'>
-			<HStack alignItems='flex-start' justifyContent='space-between' w='100%'>
-				<Box>
-					<Text as='sub' textTransform='uppercase' color='darkAlpha.500'>{brand || 'luqa'}</Text>
-					<Heading size='xs' as='h6' fontWeight='semibold' color='darkAlpha.600'>{title}</Heading>
-				</Box>
-				<IconButton onClick={() => removeFromCart(id)} aria-label='Eliminar del carrito' variant='ghost' icon={<Icon as={MdDeleteOutline} w={6} h={6} />} />
-				{/* <RemoveFromCartButton  /> */}
-			</HStack>
-			<HStack justifyContent='space-between' w='100%' mt={4}>
-				<Select placeholder='Cantidad' w='5rem'>
-					<option value='1'>1</option>
-					<option value='2'>2</option>
-					<option value='3'>3</option>
-				</Select>
-				<Quantity id={id} />
-				<Box>
-					<Text as='del' color='gray.500'>{parseCurrency(regularPrice)}</Text>
-					<Text color='green.600' fontWeight='bold'>{parseCurrency(price)}</Text>
-				</Box>
-			</HStack>
-		</VStack>
-	</HStack>
 }
 
 export default Cart; 
