@@ -10,10 +10,10 @@ interface Props {
 
 const Quantity: React.FC<Props> = ({ id, quantity }) => {
 
-    const { addProduct, removeProduct } = useStoreContext();
+    const { addProduct, removeProduct, removeFromCart } = useStoreContext();
 
     return <HStack>
-        <Button onClick={() => removeProduct(id)}>
+        <Button onClick={() => quantity === 1 ? removeFromCart(id) :removeProduct(id)}>
             -
         </Button>
         <Text>{quantity}</Text>

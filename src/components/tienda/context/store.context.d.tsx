@@ -21,11 +21,11 @@ const StoreProvider: React.FC<Props> = ({ children }) => {
     }
 
     const addProduct = (id: string) => {
-        console.log('agregar products')
+        setCart(state => state.map(product => (product.item.id === id) ? { ...product, quantity: product.quantity + 1 } : product))
     }
 
     const removeProduct = (id: string) => {
-        console.log('quitar products')
+        setCart(state => state.map(product => (product.item.id === id) ? { ...product, quantity: product.quantity - 1 } : product))
     }
 
     const state = { cart }
