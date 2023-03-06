@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useStoreContext } from '../../context/store.context.d';
 import { parseCurrency } from '@/src/utils/utilities';
 import { Product } from '@/src/product/types';
+import Quantity from './Quantity';
 
 const Cart: React.FC = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -90,6 +91,7 @@ const ProductInCart: React.FC<Product> = ({ image, title, price, regularPrice, b
 					<option value='2'>2</option>
 					<option value='3'>3</option>
 				</Select>
+				<Quantity id={id} />
 				<Box>
 					<Text as='del' color='gray.500'>{parseCurrency(regularPrice)}</Text>
 					<Text color='green.600' fontWeight='bold'>{parseCurrency(price)}</Text>

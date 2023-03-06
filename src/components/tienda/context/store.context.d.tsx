@@ -17,16 +17,23 @@ const StoreProvider: React.FC<Props> = ({ children }) => {
     }
 
     const removeFromCart = (id: string) => {
-        console.log('eliminar', id)
-
         setCart(state => state.filter(product => product.id !== id))
+    }
+
+    const addProduct = (id: string) => {
+        console.log('agregar products')
+    }
+    
+    const removeProduct = (id: string)  => {
+        console.log('quitar products')
     }
 
     const state = { cart }
     
     return <TodoContext.Provider value={{
         state,
-        addToCart, removeFromCart
+        addToCart, removeFromCart,
+       addProduct, removeProduct, 
     }}>{children}</TodoContext.Provider>;
 };
 

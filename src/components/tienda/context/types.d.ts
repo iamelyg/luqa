@@ -6,4 +6,6 @@ export type StoreContextType = {
   }
   addToCart: (product: Product) => void;
   removeFromCart: (product: string) => void;
+  addProduct: (id: string) => void;
+  removeProduct: (id: string) => void;
 };
