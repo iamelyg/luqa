@@ -1,7 +1,7 @@
 
 import { Product } from '@/src/product/types';
 import { useContext, createContext, useState } from 'react';
-import { StoreContextType } from './types';
+import { StoreContextType, ProductInCart } from './types';
 
 const TodoContext = createContext<StoreContextType | null>(null);
 
@@ -10,30 +10,30 @@ interface Props {
 }
 
 const StoreProvider: React.FC<Props> = ({ children }) => {
-    const [cart, setCart] = useState<Product[]>([]);
+    const [cart, setCart] = useState<ProductInCart[]>([]);
 
     const addToCart = (product: Product) => {
-        setCart(state => state.concat(product))
+        setCart(state => state.concat({ item: product, quantity: 1 }))
     }
 
     const removeFromCart = (id: string) => {
-        setCart(state => state.filter(product => product.id !== id))
+        setCart(state => state.filter(product => product.item.id !== id))
     }
 
     const addProduct = (id: string) => {
         console.log('agregar products')
     }
-    
-    const removeProduct = (id: string)  => {
+
+    const removeProduct = (id: string) => {
         console.log('quitar products')
     }
 
     const state = { cart }
-    
+
     return <TodoContext.Provider value={{
         state,
         addToCart, removeFromCart,
-       addProduct, removeProduct, 
+        addProduct, removeProduct,
     }}>{children}</TodoContext.Provider>;
 };
 

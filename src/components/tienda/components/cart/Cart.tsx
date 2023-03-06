@@ -13,8 +13,8 @@ const Cart: React.FC = () => {
 	const { state: { cart } } = useStoreContext();
 
 	const productList = useMemo(() => cart
-		.reduce((message, product) => message.concat(`* ${product.title} - ${parseCurrency(product.price)}\n`), '')
-		.concat(`\nTotal: ${parseCurrency(cart.reduce((total, product) => total + product.price, 0))}`)
+		.reduce((message, product) => message.concat(`* ${product.item.title} - ${parseCurrency(product.item.price)}\n`), '')
+		.concat(`\nTotal: ${parseCurrency(cart.reduce((total, product) => total + product.item.price, 0))}`)
 		, [cart])
 
 	const text = `*Hola*, quiero pagar mi pedido \n\n`;
@@ -38,20 +38,20 @@ const Cart: React.FC = () => {
 					<DrawerCloseButton />
 					<DrawerHeader>Tus productos</DrawerHeader>
 					<DrawerBody>
-						{cart.map(prod => <ProductInCart key={prod.id} {...prod} />)}
+						{cart.map(prod => <ProductInCart key={prod.item.id} {...prod.item} />)}
 					</DrawerBody>
 					<DrawerFooter gap={5} flexDirection='column' bg='brand.700' color='whiteAlpha.800'>
 						<Flex justifyContent='space-between' w='full'>
 							<Text>Subtotal</Text>
-							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, item) => total + item.regularPrice, 0))}</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + prod.item.regularPrice, 0))}</Text>
 						</Flex>
 						<Flex justifyContent='space-between' w='full'>
 							<Text>Descuento</Text>
-							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, item) => total + (item.price - item.regularPrice), 0))}</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + (prod.item.price - prod.item.regularPrice), 0))}</Text>
 						</Flex>
 						<HStack justifyContent='space-between' color='green.500' w='full'>
 							<Text>Total</Text>
-							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, item) => total + item.price, 0))}</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + prod.item.price, 0))}</Text>
 						</HStack>
 						<Box>
 							<Button variant='outline' mr={3} onClick={onClose}>
