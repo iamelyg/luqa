@@ -30,7 +30,7 @@ const Cart: React.FC = () => {
 			<Box position='relative'>
 				<IconButton aria-label='agregar al carrito' onClick={onOpen} colorScheme='brand' variant='ghost' icon={<Icon as={MdOutlineShoppingCart} w={6} h={6} />} />
 				<Text as='mark' position='absolute' top={-2} right={-2} bg='brand.300' color='white' fontSize='sm' h={6} w={6} borderRadius={100} display='flex' justifyContent='center' alignItems='center'>
-					{cart.length}
+					{cart.reduce((total, prod) => total + prod.quantity, 0)}
 				</Text>
 			</Box>
 			<Drawer isOpen={isOpen} placement='right' onClose={onClose} size='md'>
@@ -41,7 +41,7 @@ const Cart: React.FC = () => {
 					<DrawerBody display='flex' flexDirection='column'>
 						{Boolean(cart.length > 0) ?
 							cart.map(prod => <ProductInCart key={prod.item.id} product={prod} />) :
-							<EmptyCart/>}
+							<EmptyCart />}
 					</DrawerBody>
 					<DrawerFooter gap={5} flexDirection='column' bg='brand.700' color='whiteAlpha.800'>
 						<Flex justifyContent='space-between' w='full'>
