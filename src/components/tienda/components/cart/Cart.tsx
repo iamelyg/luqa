@@ -46,15 +46,15 @@ const Cart: React.FC = () => {
 					<DrawerFooter gap={5} flexDirection='column' bg='brand.700' color='whiteAlpha.800'>
 						<Flex justifyContent='space-between' w='full'>
 							<Text>Subtotal</Text>
-							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + prod.item.regularPrice, 0))}</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + (prod.item.regularPrice * prod.quantity), 0))}</Text>
 						</Flex>
 						<Flex justifyContent='space-between' w='full'>
 							<Text>Descuento</Text>
-							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + (prod.item.price - prod.item.regularPrice), 0))}</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + ((prod.item.price - prod.item.regularPrice) * prod.quantity), 0))}</Text>
 						</Flex>
 						<HStack justifyContent='space-between' color='green.500' w='full'>
 							<Text>Total</Text>
-							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + prod.item.price, 0))}</Text>
+							<Text fontWeight='bold'>{parseCurrency(cart.reduce((total, prod) => total + (prod.item.price * prod.quantity), 0))}</Text>
 						</HStack>
 						<Box>
 							<Button variant='outline' mr={3} onClick={onClose}>
