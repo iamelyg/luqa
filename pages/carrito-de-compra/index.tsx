@@ -12,7 +12,7 @@ const ShoppingCart: React.FC = () => {
         setActiveTabs([...activeTabs, index]);
     }
 
-    return <Tabs index={tabIndex} onChange={index => setTabIndex(index)} bg='white' w='container.md' m='auto' shadow='lg' p={6}>
+    return <Tabs index={tabIndex} onChange={index => setTabIndex(index)} bg='white' w={{ md: 'container.md'}} m='auto' shadow='lg' p={6}>
         <TabList>
             <Tab>Identificación</Tab>
             <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 1))}>Delivery</Tab>
