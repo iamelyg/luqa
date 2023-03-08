@@ -9,26 +9,24 @@ import { INFORMATION } from '@/src/utils/constants';
 type UserSubmitForm = {
     email: string;
     fullname: string;
-    username: string;
-    password: string;
-    confirmPassword: string;
-    acceptTerms: boolean;
+    document: string;
+    phone: string;
+    direction: string;
+    department: string;
+    province: string;
+    district: string;
+    reference: string;
 };
 
 const validationSchema = Yup.object().shape({
-    fullname: Yup.string().required('Fullname is required'),
-    username: Yup.string()
-        .required('Username is required')
-        .min(6, 'Username must be at least 6 characters')
-        .max(20, 'Username must not exceed 20 characters'),
-    email: Yup.string()
-        .required('Email is required')
-        .email('Email is invalid'),
-    password: Yup.string()
-        .required('Password is required')
-        .min(6, 'Password must be at least 6 characters')
-        .max(40, 'Password must not exceed 40 characters'),
-    acceptTerms: Yup.bool().oneOf([true], 'Accept Terms is required')
+    email: Yup.string().required('Correo es obligatorio').email('Correo inválido'),
+    fullname: Yup.string().required('Nombre y apellido es obligatorio'),
+    phone: Yup.string().required('Celular es requerido').length(9, 'Debe ser 9 caracteres'),
+    direction: Yup.string().required('Dirección es obligatoria'),
+    department: Yup.string().required('Departamento es obligatorio'),
+    province: Yup.string().required('Provincia es obligatorio'),
+    district: Yup.string().required('Distrito es obligatorio'),
+    reference: Yup.string().required('Referencia es obligatorio'),
 });
 
 const ShoppingCart: React.FC = () => {
@@ -44,13 +42,14 @@ const ShoppingCart: React.FC = () => {
         resolver: yupResolver(validationSchema)
     });
 
-    const onSubmit =  (index: number) => (data: UserSubmitForm) => {
+    const onSubmit = (index: number) => (data: UserSubmitForm) => {
         console.log('INEEX', index)
         setTabIndex(index);
         setActiveTabs([...activeTabs, index]);
 
         console.log(JSON.stringify(data, null, 2));
     };
+
 
     console.log('errors', errors)
     return <Tabs index={tabIndex} onChange={index => setTabIndex(index)} bg='white' w={{ md: 'container.md' }} m='auto' shadow='lg' p={6}>
@@ -64,16 +63,10 @@ const ShoppingCart: React.FC = () => {
                 {
                     INFORMATION.cart.identification.map((inp, id) => <Box key={id} marginY={5}>
                         <Text mb='8px'>{inp.label}</Text>
-                        <Input {...register(inp.name as any)}  placeholder={inp.placeholder} />
+                        <Input {...register(inp.name as any)} placeholder={inp.placeholder} />
                     </Box>)
                 }
-                {/* <Box marginY={5}>
-                    <Text mb='8px'>Nombre</Text>
-                    <Input {...register('fullname')} placeholder='Ingresa tu nombre' />
-                </Box> */}
-
                 <Button onClick={handleSubmit(onSubmit(1))}>Siguiente</Button>
-                {/* <Button onClick={() => onClickNext(1)}>Siguiente</Button> */}
             </TabPanel>
             <TabPanel>
                 {
@@ -84,7 +77,10 @@ const ShoppingCart: React.FC = () => {
                 }
                 <Button onClick={handleSubmit(onSubmit(2))}>Siguiente</Button>
             </TabPanel>
-            <TabPanel>3</TabPanel>
+            <TabPanel>
+                <Button onClick={handleSubmit(onSubmit)}>Siguiente</Button>
+
+            </TabPanel>
         </TabPanels>
     </Tabs>
 }

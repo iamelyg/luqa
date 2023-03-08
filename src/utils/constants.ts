@@ -44,15 +44,15 @@ export const INFORMATION: Information = {
   cart: {
     identification: [
       { label: 'Correo', placeholder: 'Ingresa tu correo', type: 'email', name: 'email' },
-      { label: 'Nombres y Apellidos', placeholder: 'Ingresa tu nombre', type: 'text', name: 'name' },
+      { label: 'Nombres y Apellidos', placeholder: 'Ingresa tu nombre', type: 'text', name: 'fullname' },
       { label: 'Doc. identidad', placeholder: 'Ingresa tu n° doc. identidad', type: 'text', name: 'document' },
       { label: 'Celular', placeholder: 'Ingresa tu n° celular', type: 'text', name: 'phone' },
     ],
     location: [
       { label: 'Dirección', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'direction' },
-      { label: 'Distrito', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'district' },
-      { label: 'Provincia', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'province' },
       { label: 'Departamento', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'department' },
+      { label: 'Provincia', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'province' },
+      { label: 'Distrito', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'district' },
       { label: 'Referencia', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'reference' },
     ]
   }
