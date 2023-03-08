@@ -43,17 +43,17 @@ export const INFORMATION: Information = {
   ],
   cart: {
     identification: [
-      { label: 'Correo', placeholder: 'Ingresa tu correo', type: 'email' },
-      { label: 'Nombres y Apellidos', placeholder: 'Ingresa tu nombre', type: 'text' },
-      { label: 'Doc. identidad', placeholder: 'Ingresa tu n° doc. identidad', type: 'text' },
-      { label: 'Celular', placeholder: 'Ingresa tu n° celular', type: 'text' },
+      { label: 'Correo', placeholder: 'Ingresa tu correo', type: 'email', name: 'email' },
+      { label: 'Nombres y Apellidos', placeholder: 'Ingresa tu nombre', type: 'text', name: 'name' },
+      { label: 'Doc. identidad', placeholder: 'Ingresa tu n° doc. identidad', type: 'text', name: 'document' },
+      { label: 'Celular', placeholder: 'Ingresa tu n° celular', type: 'text', name: 'phone' },
     ],
     location: [
-      { label: 'Dirección', placeholder: 'Ingresa tu dirección ', type: 'text' },
-      { label: 'Distrito', placeholder: 'Ingresa tu dirección ', type: 'text' },
-      { label: 'Provincia', placeholder: 'Ingresa tu dirección ', type: 'text' },
-      { label: 'Departamento', placeholder: 'Ingresa tu dirección ', type: 'text' },
-      { label: 'Referencia', placeholder: 'Ingresa tu dirección ', type: 'text' },
+      { label: 'Dirección', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'direction' },
+      { label: 'Distrito', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'district' },
+      { label: 'Provincia', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'province' },
+      { label: 'Departamento', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'department' },
+      { label: 'Referencia', placeholder: 'Ingresa tu dirección ', type: 'text', name: 'reference' },
     ]
   }
 };
@@ -80,6 +80,7 @@ export interface Input {
   label: string;
   placeholder: string;
   type: string;
+  name: string;
 }
 
 export interface Menu {
