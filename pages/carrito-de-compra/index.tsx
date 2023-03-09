@@ -78,7 +78,7 @@ const ShoppingCart: React.FC = () => {
                 <Button onClick={handleSubmit(onSubmit(2))}>Siguiente</Button>
             </TabPanel>
             <TabPanel>
-                <Button onClick={handleSubmit(onSubmit)}>Siguiente</Button>
+                <Button onClick={handleSubmit(onSubmit(3))}>Siguiente</Button>
 
             </TabPanel>
         </TabPanels>
