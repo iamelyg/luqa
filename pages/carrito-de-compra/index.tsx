@@ -1,33 +1,17 @@
 import { useState, Fragment } from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Input, Text, Box, Button } from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
 
-import { INFORMATION } from '@/src/utils/constants';
-
-type UserSubmitForm = {
-    email: string;
-    fullname: string;
-    document: string;
-    phone: string;
-    direction: string;
-    department: string;
-    province: string;
-    district: string;
-    reference: string;
-};
-
-// const validationSchema = Yup.object().shape({
-//     email: Yup.string().required('Correo es obligatorio').email('Correo inválido'),
-//     fullname: Yup.string().required('Nombre y apellido es obligatorio'),
-//     phone: Yup.string().required('Celular es requerido').length(9, 'Debe ser 9 caracteres'),
-//     direction: Yup.string().required('Dirección es obligatoria'),
-//     department: Yup.string().required('Departamento es obligatorio'),
-//     province: Yup.string().required('Provincia es obligatorio'),
-//     district: Yup.string().required('Distrito es obligatorio'),
-//     reference: Yup.string().required('Referencia es obligatorio'),
-// });
+// type UserSubmitForm = {
+//     email: string;
+//     fullname: string;
+//     document: string;
+//     phone: string;
+//     direction: string;
+//     department: string;
+//     province: string;
+//     district: string;
+//     reference: string;
+// };
 
 const ShoppingCart: React.FC = () => {
     const [tabIndex, setTabIndex] = useState<number>(0);
@@ -68,7 +52,7 @@ const ShoppingCart: React.FC = () => {
                     <Step1 onNext={handleNextStep} />
                 </TabPanel>
                 <TabPanel>
-                    <Step2 onNext={handleNextStep}/>
+                    <Step2 onNext={handleNextStep} />
                 </TabPanel>
                 <TabPanel>
                     <Step3 onDone={onSubmit} />
@@ -85,7 +69,6 @@ export default ShoppingCart;
 
 
 
-// import { useState } from 'react'
 import { Container, Stack } from '@chakra-ui/react'
 import { Step1 } from './components/Step1'
 import { Step2 } from './components/Step2'
