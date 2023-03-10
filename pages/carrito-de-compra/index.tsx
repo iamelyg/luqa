@@ -35,10 +35,8 @@ const ShoppingCart: React.FC = () => {
     const [step, setStep] = useState<Step>('1')
     const [formData, setFormData] = useState({})
 
-    const onSubmit = (data: UserSubmitForm) => {
-        setFormData({ ...formData, ...data })
-
-        console.log('data', JSON.stringify(data, null, 2));
+    const onSubmit = () => {
+        console.log('formData', formData)
     };
 
 
@@ -70,17 +68,10 @@ const ShoppingCart: React.FC = () => {
                     <Step1 onNext={handleNextStep} />
                 </TabPanel>
                 <TabPanel>
-                    {
-                        INFORMATION.cart.location.map((inp, id) => <Box key={id} marginY={5}>
-                            <Text mb='8px'>{inp.label}</Text>
-                            <Input placeholder={inp.placeholder} />
-                        </Box>)
-                    }
-                    {/* <Button onClick={handleSubmit(onSubmit(2))}>Siguiente</Button> */}
+                    <Step2 onNext={handleNextStep}/>
                 </TabPanel>
                 <TabPanel>
-                    {/* <Button onClick={handleSubmit(onSubmit(3))}>Siguiente</Button> */}
-
+                    <Step3 onDone={onSubmit} />
                 </TabPanel>
             </TabPanels>
         </Tabs>
