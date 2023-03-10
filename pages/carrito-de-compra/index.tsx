@@ -1,5 +1,10 @@
 import { useState, Fragment } from 'react';
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Input, Text, Box, Button } from '@chakra-ui/react';
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Stack } from '@chakra-ui/react';
+
+import { Step1 } from './components/Step1'
+import { Step2 } from './components/Step2'
+import { Step3 } from './components/Step3'
+import { StepIndicator, StepIndicatorStep } from './components/StepIndicator'
 
 // type UserSubmitForm = {
 //     email: string;
@@ -43,9 +48,18 @@ const ShoppingCart: React.FC = () => {
     return <Fragment>
         <Tabs index={tabIndex} onChange={index => setTabIndex(index)} bg='white' w={{ md: 'container.md' }} m='auto' shadow='lg' p={6}>
             <TabList>
-                <Tab>Identificación</Tab>
-                <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 1))}>Delivery</Tab>
-                <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 2))}>Pago</Tab>
+                <Tab>
+                    <StepIndicatorStep step="1" isActive={step === '1'} />
+                    {step === '1' ? 'Identificación' : ''}
+                </Tab>
+                <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 1))}>
+                    <StepIndicatorStep step="2" isActive={step === '2'} />
+                    Delivery
+                </Tab>
+                <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 2))}>
+                    <StepIndicatorStep step="3" isActive={step === '3'} />
+                    Pago
+                </Tab>
             </TabList>
             <TabPanels>
                 <TabPanel>
@@ -68,48 +82,4 @@ const ShoppingCart: React.FC = () => {
 export default ShoppingCart;
 
 
-
-import { Container, Stack } from '@chakra-ui/react'
-import { Step1 } from './components/Step1'
-import { Step2 } from './components/Step2'
-import { Step3 } from './components/Step3'
-import { StepIndicator } from './components/StepIndicator'
-
 type Step = '1' | '2' | '3'
-
-// export default function Home() {
-//        const [step, setStep] = useState<Step>('1')
-//   const [formData, setFormData] = useState({ name: '', email: '' })
-
-//   const handleNextStep = (data: any) => {
-//     setFormData({ ...formData, ...data })
-//     setStep(prevStep => {
-//       switch (prevStep) {
-//         case '1':
-//           return '2'
-//         case '2':
-//           return '3'
-//         default:
-//      return prevStep
-//       }
-//     })
-//   }
-
-//   const handleReset = () => {
-//     setStep('1')
-//     setFormData({ name: '', email: '' })
-//   }
-
-//   return (
-//     <Container maxW="container.sm">
-//       <Stack spacing={8}>
-//         {step === '1' && <Step1 onNext={handleNextStep} />}
-//         {step === '2' && <Step2 onNext={handleNextStep} />}
-//         {step === '3' && <Step3 onDone={handleReset} />}
-//         <Stack direction="row" justifyContent="center">
-//           <StepIndicator step={step} />
-//         </Stack>
-//       </Stack>
-//     </Container>
-//   )
-// }

@@ -18,7 +18,7 @@ export const StepIndicator = ({ step }: Props) => {
     )
 }
 
-const StepIndicatorStep = ({ step, isActive }: { step: string, isActive: boolean }) => {
+export const StepIndicatorStep = ({ step, isActive }: { step: string, isActive: boolean }) => {
     return (
         <Flex
             alignItems="center"
