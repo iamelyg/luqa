@@ -32,7 +32,7 @@ const ShoppingCart: React.FC = () => {
     const handleNextStep = (data: any) => {
         setFormData({ ...formData, ...data })
         // setTabIndex(Number(step));
-        setActiveTabs([...activeTabs, Number(step)]);
+        setActiveTabs([...activeTabs, step+1]);
         setStep(prevStep => {
             switch (prevStep) {
                 case 0:
@@ -54,11 +54,11 @@ const ShoppingCart: React.FC = () => {
                 </Tab>
                 <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 1))}>
                     <StepIndicatorStep step="2" isActive={step === 1} />
-                    Delivery
+                    {step === 0 ? 'Delivery' : ''}
                 </Tab>
                 <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 2))}>
                     <StepIndicatorStep step="3" isActive={step === 2} />
-                    Pago
+                    {step === 0 ? 'Pago' : ''}
                 </Tab>
             </TabList>
             <TabPanels>
