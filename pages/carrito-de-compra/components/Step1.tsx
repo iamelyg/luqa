@@ -23,7 +23,8 @@ type Props = {
 }
 
 export const Step1 = ({ onNext }: Props) => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: yupResolver(validationSchema) })
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>()
+    // const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: yupResolver(validationSchema) })
 
     const onSubmit: SubmitHandler<FormData> = (data) => {
         onNext(data)

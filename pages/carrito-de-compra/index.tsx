@@ -54,11 +54,11 @@ const ShoppingCart: React.FC = () => {
                 </Tab>
                 <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 1))}>
                     <StepIndicatorStep step="2" isActive={step === 1} />
-                    {step === 0 ? 'Delivery' : ''}
+                    {step === 1 ? 'Delivery' : ''}
                 </Tab>
                 <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 2))}>
                     <StepIndicatorStep step="3" isActive={step === 2} />
-                    {step === 0 ? 'Pago' : ''}
+                    {step === 2 ? 'Pago' : ''}
                 </Tab>
             </TabList>
             <TabPanels>
