@@ -18,44 +18,34 @@ type UserSubmitForm = {
     reference: string;
 };
 
-const validationSchema = Yup.object().shape({
-    email: Yup.string().required('Correo es obligatorio').email('Correo inválido'),
-    fullname: Yup.string().required('Nombre y apellido es obligatorio'),
-    phone: Yup.string().required('Celular es requerido').length(9, 'Debe ser 9 caracteres'),
-    direction: Yup.string().required('Dirección es obligatoria'),
-    department: Yup.string().required('Departamento es obligatorio'),
-    province: Yup.string().required('Provincia es obligatorio'),
-    district: Yup.string().required('Distrito es obligatorio'),
-    reference: Yup.string().required('Referencia es obligatorio'),
-});
+// const validationSchema = Yup.object().shape({
+//     email: Yup.string().required('Correo es obligatorio').email('Correo inválido'),
+//     fullname: Yup.string().required('Nombre y apellido es obligatorio'),
+//     phone: Yup.string().required('Celular es requerido').length(9, 'Debe ser 9 caracteres'),
+//     direction: Yup.string().required('Dirección es obligatoria'),
+//     department: Yup.string().required('Departamento es obligatorio'),
+//     province: Yup.string().required('Provincia es obligatorio'),
+//     district: Yup.string().required('Distrito es obligatorio'),
+//     reference: Yup.string().required('Referencia es obligatorio'),
+// });
 
 const ShoppingCart: React.FC = () => {
     const [tabIndex, setTabIndex] = useState<number>(0);
     const [activeTabs, setActiveTabs] = useState<number[]>([0]);
+    const [step, setStep] = useState<Step>('1')
+    const [formData, setFormData] = useState({})
 
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }
-    } = useForm<UserSubmitForm>({
-        resolver: yupResolver(validationSchema)
-    });
-
-    const onSubmit = (index: number) => (data: UserSubmitForm) => {
-        console.log('INEEX', index)
+    const onSubmit = (data: UserSubmitForm) => {
         setFormData({ ...formData, ...data })
-        setTabIndex(index);
-        setActiveTabs([...activeTabs, index]);
 
         console.log('data', JSON.stringify(data, null, 2));
     };
 
-    const [step, setStep] = useState<Step>('1')
-    const [formData, setFormData] = useState({ name: '', email: '' })
 
     const handleNextStep = (data: any) => {
         setFormData({ ...formData, ...data })
+        setTabIndex(Number(step));
+        setActiveTabs([...activeTabs, Number(step)]);
         setStep(prevStep => {
             switch (prevStep) {
                 case '1':
@@ -68,7 +58,6 @@ const ShoppingCart: React.FC = () => {
         })
     }
 
-    console.log('errors', errors)
     return <Fragment>
         <Tabs index={tabIndex} onChange={index => setTabIndex(index)} bg='white' w={{ md: 'container.md' }} m='auto' shadow='lg' p={6}>
             <TabList>
@@ -87,10 +76,10 @@ const ShoppingCart: React.FC = () => {
                             <Input placeholder={inp.placeholder} />
                         </Box>)
                     }
-                    <Button onClick={handleSubmit(onSubmit(2))}>Siguiente</Button>
+                    {/* <Button onClick={handleSubmit(onSubmit(2))}>Siguiente</Button> */}
                 </TabPanel>
                 <TabPanel>
-                    <Button onClick={handleSubmit(onSubmit(3))}>Siguiente</Button>
+                    {/* <Button onClick={handleSubmit(onSubmit(3))}>Siguiente</Button> */}
 
                 </TabPanel>
             </TabPanels>
