@@ -4,7 +4,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel, Stack } from '@chakra-ui/react
 import { Step1 } from './components/Step1'
 import { Step2 } from './components/Step2'
 import { Step3 } from './components/Step3'
-import { StepIndicator, StepIndicatorStep } from './components/StepIndicator'
+import { StepIndicatorStep } from './components/StepIndicator'
 
 // type UserSubmitForm = {
 //     email: string;
@@ -73,9 +73,6 @@ const ShoppingCart: React.FC = () => {
                 </TabPanel>
             </TabPanels>
         </Tabs>
-        <Stack direction="row" justifyContent="center">
-            <StepIndicator step={step} />
-        </Stack>
     </Fragment>
 }
 
