@@ -19,9 +19,9 @@ import { StepIndicatorStep } from './components/StepIndicator'
 // };
 
 const ShoppingCart: React.FC = () => {
-    const [tabIndex, setTabIndex] = useState<number>(0);
+    // const [tabIndex, setTabIndex] = useState<number>(0);
     const [activeTabs, setActiveTabs] = useState<number[]>([0]);
-    const [step, setStep] = useState<Step>(1)
+    const [step, setStep] = useState<number>(0)
     const [formData, setFormData] = useState({})
 
     const onSubmit = () => {
@@ -31,14 +31,14 @@ const ShoppingCart: React.FC = () => {
 
     const handleNextStep = (data: any) => {
         setFormData({ ...formData, ...data })
-        setTabIndex(Number(step));
+        // setTabIndex(Number(step));
         setActiveTabs([...activeTabs, Number(step)]);
         setStep(prevStep => {
             switch (prevStep) {
+                case 0:
+                    return 1
                 case 1:
                     return 2
-                case 2:
-                    return 3
                 default:
                     return prevStep
             }
@@ -46,18 +46,18 @@ const ShoppingCart: React.FC = () => {
     }
 
     return <Fragment>
-        <Tabs index={tabIndex} onChange={index => setTabIndex(index)} bg='white' w={{ md: 'container.md' }} m='auto' shadow='lg' p={6}>
+        <Tabs index={step} onChange={index => setStep(index)} bg='white' w={{ md: 'container.md' }} m='auto' shadow='lg' p={6}>
             <TabList>
                 <Tab>
-                    <StepIndicatorStep step="1" isActive={step === 1} />
-                    {step === 1 ? 'Identificación' : ''}
+                    <StepIndicatorStep step="1" isActive={step === 0} />
+                    {step === 0 ? 'Identificación' : ''}
                 </Tab>
                 <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 1))}>
-                    <StepIndicatorStep step="2" isActive={step === 2} />
+                    <StepIndicatorStep step="2" isActive={step === 1} />
                     Delivery
                 </Tab>
                 <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 2))}>
-                    <StepIndicatorStep step="3" isActive={step === 3} />
+                    <StepIndicatorStep step="3" isActive={step === 2} />
                     Pago
                 </Tab>
             </TabList>
@@ -77,6 +77,3 @@ const ShoppingCart: React.FC = () => {
 }
 
 export default ShoppingCart;
-
-
-type Step = 1 | 2 | 3
