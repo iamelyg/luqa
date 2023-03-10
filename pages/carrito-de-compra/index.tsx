@@ -21,7 +21,7 @@ import { StepIndicatorStep } from './components/StepIndicator'
 const ShoppingCart: React.FC = () => {
     const [tabIndex, setTabIndex] = useState<number>(0);
     const [activeTabs, setActiveTabs] = useState<number[]>([0]);
-    const [step, setStep] = useState<Step>('1')
+    const [step, setStep] = useState<Step>(1)
     const [formData, setFormData] = useState({})
 
     const onSubmit = () => {
@@ -35,10 +35,10 @@ const ShoppingCart: React.FC = () => {
         setActiveTabs([...activeTabs, Number(step)]);
         setStep(prevStep => {
             switch (prevStep) {
-                case '1':
-                    return '2'
-                case '2':
-                    return '3'
+                case 1:
+                    return 2
+                case 2:
+                    return 3
                 default:
                     return prevStep
             }
@@ -49,15 +49,15 @@ const ShoppingCart: React.FC = () => {
         <Tabs index={tabIndex} onChange={index => setTabIndex(index)} bg='white' w={{ md: 'container.md' }} m='auto' shadow='lg' p={6}>
             <TabList>
                 <Tab>
-                    <StepIndicatorStep step="1" isActive={step === '1'} />
-                    {step === '1' ? 'Identificación' : ''}
+                    <StepIndicatorStep step="1" isActive={step === 1} />
+                    {step === 1 ? 'Identificación' : ''}
                 </Tab>
                 <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 1))}>
-                    <StepIndicatorStep step="2" isActive={step === '2'} />
+                    <StepIndicatorStep step="2" isActive={step === 2} />
                     Delivery
                 </Tab>
                 <Tab isDisabled={!Boolean(activeTabs.find(tab => tab === 2))}>
-                    <StepIndicatorStep step="3" isActive={step === '3'} />
+                    <StepIndicatorStep step="3" isActive={step === 3} />
                     Pago
                 </Tab>
             </TabList>
@@ -79,4 +79,4 @@ const ShoppingCart: React.FC = () => {
 export default ShoppingCart;
 
 
-type Step = '1' | '2' | '3'
+type Step = 1 | 2 | 3
